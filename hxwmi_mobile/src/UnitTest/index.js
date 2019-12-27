@@ -1,0 +1,1 @@
+export { HocApp } from './HocApp';

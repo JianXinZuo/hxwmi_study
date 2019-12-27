@@ -1,0 +1,52 @@
+.good_book_list{
+    height: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    -webkit-overflow-scrolling: touch; //有回弹效果
+    touch-action: cross-slide-x;
+    padding-bottom: 1rem;
+    background-color: #fff;
+}
+
+.good_book_list_item{
+    width: 28%;
+    height: auto;
+    margin-left: 1rem;
+    text-align: left;
+    flex-basis: 28%;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+.good_book_list_item img{
+    width: 100%;
+}
+.good_book_list_item .good_book_item_title{
+    color:rgba(51,51,51,1);
+    font-size: 1.04rem;
+    height: 1.7rem;
+    line-height: 1.7rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 1rem;
+}
+
+.good_book_list_item .good_book_item_desc{
+    height: 1.3rem;
+    line-height: 1.3rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.good_book_list_item .good_book_item_desc_price{
+    color: rgba(255,128,4,1);
+    font-size: 1.04rem;
+    text-align: left;
+    // padding-right: 0.5rem;
+}
+.good_book_list_item .good_book_item_desc_buy_num{
+    color:rgba(153,153,153,1);
+    font-size: 0.7rem;
+}
+.good_book_list:last-child{
+    margin-right: 1.2rem;
+}

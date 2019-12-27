@@ -1,0 +1,70 @@
+.public_course_list{
+    height: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    -webkit-overflow-scrolling: touch; //有回弹效果
+    touch-action: cross-slide-x;
+    padding-bottom: 1rem;
+    background-color: #fff;
+}
+.public_course_list_item{
+    width: 40%;
+    height: auto;
+    margin-left: 1.2rem;
+    text-align: left;
+    flex-basis: 40%;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+.public_course_list:last-child{
+    margin-right: 1.2rem;
+}
+.public_course_list_item img{
+    width: 100%;
+}
+.public_course_list_item .course_list_item_title{
+    color:rgba(51,51,51,1);
+    font-size: 1.04rem;
+    height: 1.7rem;
+    line-height: 1.7rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 1rem;
+}
+
+.public_course_list_item .course_list_item_desc{
+    height: 1.3rem;
+    line-height: 1.3rem;
+}
+
+.public_course_list_item .course_list_item_online_number{
+    color:rgba(153,153,153,1);
+    font-size: 0.7rem;
+}
+.public_course_list_item .course_list_item_free{
+    color:rgba(66,196,143,1);
+    font-size: 1.04rem;
+    text-align: left;
+    // padding-right: 0.2rem;
+}
+.public_course_list_item .course_list_item_price{
+    color: rgba(255,128,4,1);
+    font-size: 1.04rem;
+    text-align: left;
+    // padding-right: 0.5rem;
+}
+
+.public_course_content{
+    width: 100%;
+}
+.course_list_item_desc span{
+    display: inline-block;
+    height: 1.3rem;
+}
+
+.public_course_list::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    display: none;
+}
