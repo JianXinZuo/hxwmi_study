@@ -11,6 +11,7 @@ import SystemCourse from './SystemCourse';
 import TrainingCourse from './TrainingCourse';
 import Loading from './Loading';
 import LiveCourse from './LiveCourse';
+import ViewHeader from './ViewHeader';
 
 export{
     CourseType,
@@ -24,4 +25,5 @@ export{
     TrainingCourse,
     Loading,
     LiveCourse,
+    ViewHeader
 }

@@ -8,7 +8,7 @@ import {
 
 class GoodBook extends Component {
     render() {
-        console.log(this.props);
+        // console.log(this.props);
         const { list } = this.props;
         const bookList = list.map((item)=>{  
             return (

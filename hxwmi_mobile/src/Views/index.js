@@ -76,16 +76,23 @@ const Home = Loadable({
     loading:Loading
 });
 
+//404页面
 const NotFound = Loadable({
     loader:()=> import('./NotFound/index'),
     loading: Loading
 });
 
+//登录
 const Login = Loadable({
     loader:()=> import('./Login/index'),
     loading: Loading
 });
 
+//选择专业
+const SelectMajor = Loadable({
+    loader:()=> import('./SelectMajor'),
+    loading: Loading
+});
 
 export{
     Login,
@@ -95,5 +102,6 @@ export{
     MyCourse,
     Questions,
     FriendCircle,
-    Home
+    Home,
+    SelectMajor
 }

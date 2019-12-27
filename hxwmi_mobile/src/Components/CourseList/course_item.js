@@ -7,7 +7,7 @@ class CourseItem extends Component {
     }
     
     render() {
-        console.log(this.props);
+        // console.log(this.props);
         const { id, cover, name, studyCount, charge }= this.props.course;
         let desc = null;
 

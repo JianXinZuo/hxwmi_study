@@ -6,7 +6,8 @@ import {
     MyCourse,
     Questions,
     FriendCircle,
-    Home
+    Home,
+    SelectMajor
 } from '../Views';
 
 //一级页面
@@ -23,6 +24,10 @@ export const mainRouter = [
         pathname:'/404',        //404页面
         component: NotFound,
         title:'未找到'
+    },{
+        pathname:'/select_major',        //选择
+        component: SelectMajor,
+        title:'选择专业'
     }
     // {
     //     pathname:'/register',   //注册页面

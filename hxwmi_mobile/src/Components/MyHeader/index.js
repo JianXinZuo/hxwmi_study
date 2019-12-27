@@ -11,9 +11,15 @@ class MyHeader extends Component {
     }
 
     componentDidMount(){
-        document.title = "沃米易学-初级会计职称考试";
+        let major = localStorage.getItem('major');
+        document.title = `沃米易学-${major || "初级会计职称考试"}`;
     }
     
+    click_Handler =()=>{
+        console.log(this.props);
+        this.props.history.push('/select_major');
+    }
+
     render() {
         return (
             <div className="my_index_header_container">
@@ -22,8 +28,8 @@ class MyHeader extends Component {
 
                     <WingBlank>
                         <Flex alignContent="center">
-                            <Icon type={"left"} color="#ff8004"></Icon>
-                            <div className="header_title">初级会计职称考试</div>
+                            <Icon type={"left"} color="#ff8004" onClick={ this.click_Handler }></Icon>
+                            <div className="header_title" onClick={ this.click_Handler }>初级会计职称考试</div>
                         </Flex>
                     </WingBlank>
                 </div>
