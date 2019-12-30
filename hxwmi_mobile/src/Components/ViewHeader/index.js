@@ -10,7 +10,8 @@ class ViewHeader extends Component {
     }
 
     click_Handler =()=>{
-        this.props.history.goBack();
+        this.props.onClick();
+        // this.props.history.push('/index');
     }
     
     render() {

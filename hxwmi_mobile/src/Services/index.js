@@ -7,6 +7,13 @@ const Axios_Get_IndexContent = async (params)=>{
     );
 }
 
+const Axios_Get_MajorAll = async ()=>{
+    return (
+        await Axios.Get('/piece/base/getcategory')
+    );
+}
+
 export {
     Axios_Get_IndexContent,
+    Axios_Get_MajorAll
 };
