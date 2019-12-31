@@ -12,6 +12,10 @@ class MyCarousel extends Component {
             imgHeight: 176,
         }
     }
+
+    componentDidMount(){
+        
+    }
     
     render() {
         return (

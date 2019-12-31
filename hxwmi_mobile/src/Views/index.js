@@ -42,13 +42,13 @@ import Loadable from './MyLoaderPlugin';    //引入自己手写的Lazy懒加载
 // });
 
 const Index = Loadable({
-    loader:()=> import('./Index/index'),
+    loader:async ()=> import('./Index/index'),
     loading:Loading
 });
 
 //首页
 const IndexContent = Loadable({
-    loader:()=> import('./Index/Content'),
+    loader: ()=> import('./Index/Content'),
     loading:Loading
 });
 
@@ -94,6 +94,12 @@ const SelectMajor = Loadable({
     loading: Loading
 });
 
+//更多热门头条
+const HotNews = Loadable({
+    loader:()=> import('./HotNews'),
+    loading: Loading
+});
+
 export{
     Login,
     NotFound,
@@ -103,5 +109,6 @@ export{
     Questions,
     FriendCircle,
     Home,
-    SelectMajor
+    SelectMajor,
+    HotNews
 }

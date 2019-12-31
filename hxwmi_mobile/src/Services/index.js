@@ -13,7 +13,19 @@ const Axios_Get_MajorAll = async ()=>{
     );
 }
 
+const GetHotNews_Async = async (params)=>{
+    
+    const response = await Axios.PostHeader(`/piece/ArticleShow/articleList?info=${params}`,null);
+    
+    if(response.status === 200 && response.statusText === "OK"){
+        return response.data;
+    }
+
+    return null;
+}
+
 export {
     Axios_Get_IndexContent,
-    Axios_Get_MajorAll
+    Axios_Get_MajorAll,
+    GetHotNews_Async
 };

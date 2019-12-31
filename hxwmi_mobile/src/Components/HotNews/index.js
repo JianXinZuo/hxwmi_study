@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './index.less';
+import { withRouter } from 'react-router-dom';
 import { 
     WingBlank,
     Carousel,
@@ -7,7 +8,7 @@ import {
     Icon
 } from 'antd-mobile';
 
-
+@withRouter
 class HotNews extends Component {
     
     constructor(props) {
@@ -16,6 +17,11 @@ class HotNews extends Component {
     
     click_Handler =(e)=>{
         console.log(e);
+    }
+
+    //热门头条：跳转到更多页面
+    GotoMoreIndex = (e)=>{
+        this.props.history.push('/hotnews');
     }
 
     render() {
@@ -62,7 +68,7 @@ class HotNews extends Component {
                             </Carousel>
                         </div>
                         <div className="hot_news_more">
-                            <a href="">
+                            <a onClick={ this.GotoMoreIndex }>
                                 <div className="hot_news_more_txt">更多</div>
                                 <Icon type="right" />
                             </a>

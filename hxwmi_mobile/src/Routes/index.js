@@ -7,7 +7,8 @@ import {
     Questions,
     FriendCircle,
     Home,
-    SelectMajor
+    SelectMajor,
+    HotNews
 } from '../Views';
 
 //一级页面
@@ -25,9 +26,13 @@ export const mainRouter = [
         component: NotFound,
         title:'未找到'
     },{
-        pathname:'/select_major',        //选择
+        pathname:'/select_major',        //选择专业
         component: SelectMajor,
         title:'选择专业'
+    },{
+        pathname:'/hotnews',        //选择专业
+        component: HotNews,
+        title:'热门头条' 
     }
     // {
     //     pathname:'/register',   //注册页面

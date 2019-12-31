@@ -11,7 +11,6 @@ class ViewHeader extends Component {
 
     click_Handler =()=>{
         this.props.onClick();
-        // this.props.history.push('/index');
     }
     
     render() {
@@ -19,7 +18,7 @@ class ViewHeader extends Component {
             <div className="view_header">
                 <div className="view_header_conent">
                     <Icon type={"left"} color="#000" onClick={ this.click_Handler }></Icon>
-                    <div className="header_title" onClick={ this.click_Handler }>
+                    <div className="header_title">
                         {this.props.title}
                     </div>
                 </div>
