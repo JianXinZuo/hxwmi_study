@@ -100,6 +100,36 @@ const HotNews = Loadable({
     loading: Loading
 });
 
+//公开课页面
+const PublicCourse = Loadable({
+    loader:()=> import('./PublicCourse'),
+    loading: Loading
+});
+
+//直播课
+const LiveCourse = Loadable({
+    loader:()=> import('./LiveCourse'),
+    loading: Loading
+});
+
+//系统班
+const SystemCourse = Loadable({
+    loader:()=> import('./SystemCourse'),
+    loading: Loading
+});
+
+//专题班
+const TrainingCourse = Loadable({
+    loader:()=> import('./TrainingCourse'),
+    loading: Loading
+});
+
+//更多好书
+const GoodBook = Loadable({
+    loader:()=> import('./GoodBook'),
+    loading: Loading
+});
+
 export{
     Login,
     NotFound,
@@ -110,5 +140,10 @@ export{
     FriendCircle,
     Home,
     SelectMajor,
-    HotNews
+    HotNews,
+    PublicCourse,
+    LiveCourse,
+    SystemCourse,
+    TrainingCourse,
+    GoodBook
 }

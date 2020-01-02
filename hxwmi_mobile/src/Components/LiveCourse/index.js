@@ -12,7 +12,7 @@ class LiveCourse extends Component {
             <div>
                 <DividingLine></DividingLine>
                 <WingBlank>
-                    <IndexTitle Text="直播课" />
+                    <IndexTitle Text="直播课" MoreUrl="/live_course"/>
                 </WingBlank>
                 <CourseList list={this.props.list}/>
             </div>

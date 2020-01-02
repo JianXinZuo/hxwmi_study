@@ -8,7 +8,13 @@ import {
     FriendCircle,
     Home,
     SelectMajor,
-    HotNews
+    HotNews,
+    PublicCourse,
+    LiveCourse,
+    SystemCourse,
+    TrainingCourse,
+    GoodBook
+
 } from '../Views';
 
 //一级页面
@@ -30,10 +36,36 @@ export const mainRouter = [
         component: SelectMajor,
         title:'选择专业'
     },{
-        pathname:'/hotnews',        //选择专业
+        pathname:'/hotnews',        //热门头条
         component: HotNews,
         title:'热门头条' 
+    },{
+        
+        pathname:'/public_course',        //公开课
+        component: PublicCourse,
+        title:'公开课' 
+    },{
+        
+        pathname:'/live_course',        //直播课
+        component: LiveCourse,
+        title:'直播课' 
+    },{
+        
+        pathname:'/system_course',        //全程系统班
+        component: SystemCourse,
+        title:'全程系统班' 
+    },{
+        
+        pathname:'/training_course',        //专题训练班
+        component: TrainingCourse,
+        title:'专题训练班' 
+    },{
+        
+        pathname:'/good_book',        //商品列表
+        component: GoodBook,
+        title:'商品列表' 
     }
+    
     // {
     //     pathname:'/register',   //注册页面
     //     component: Register,

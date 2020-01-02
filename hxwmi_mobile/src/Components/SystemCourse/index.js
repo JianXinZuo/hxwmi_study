@@ -12,7 +12,7 @@ class SystemCourse extends Component {
             <div>
                 <DividingLine></DividingLine>
                 <WingBlank>
-                    <IndexTitle Text="全程系统班" />
+                    <IndexTitle Text="全程系统班" MoreUrl="/system_course"/>
                 </WingBlank>
                 <CourseList list={this.props.list}/>
             </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import notfound from './images/notfound.png';
 
 class CourseItem extends Component {
     constructor(props) {
@@ -19,7 +20,7 @@ class CourseItem extends Component {
 
         return (
             <div className="course_list_item" key={id}>
-                <img src={ cover } alt={ name }/>
+                <img src={ cover|| notfound } alt={ name }/>
                 <div className="course_list_item_title">{ name }</div>
                 <div className="course_list_item_desc">
                     {

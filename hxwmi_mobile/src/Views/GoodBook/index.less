@@ -1,0 +1,88 @@
+.good_book_index{
+    width: 100%;
+    height: 100%;
+    border: solid 0px red;
+    left: 100%;
+    transition: all ease-in-out 0.7s;
+    position:fixed;
+}
+.good_book_index.active{
+    left: 0;
+}
+
+.good_book_index .top_images img{
+    width: 100%;
+}
+
+.goodbook_listview{
+    border: solid 0px #0f0; 
+    max-height: calc(73% - 4.1rem);
+    height: auto;
+    width: 100%;
+    position:absolute;
+    overflow-y: scroll;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    // border: solid 1px red;
+    padding: 1rem 0;
+}
+.goodbook_listview .goodbook_item{
+    height: 18.5rem;
+    flex-basis: 45%;
+    // border: solid 1px #0f0;
+    margin-left: 3%;
+    margin-bottom: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+.goodbook_item .book_item_cover{
+    height: 13rem;
+    border:solid 0px #000;
+    background-position-y: center;
+    background-size: 100%;
+}
+.goodbook_item .book_item_desc{
+    font-size: 0.8rem;
+    color: white;
+    margin-top: 0.8rem;
+}
+.goodbook_item .book_item_desc span
+{    
+    background-color: #e26965;
+}
+.book_item_name{
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.book_item_bottom{
+    margin-top: 0.4rem;
+    height: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.book_item_bottom .book_item_price{
+    color: #D2423D;
+    font-size: 1.1rem;
+}
+.book_item_bottom .book_item_buy_number{
+    font-size: 0.8rem;
+    color: #999999;
+}
+
+.goodbook_listview .goodbook_footer{
+    flex-basis: 100%;
+    height: 4rem;
+    line-height: 3rem;
+    text-align: center;
+}

@@ -12,6 +12,7 @@ import TrainingCourse from './TrainingCourse';
 import Loading from './Loading';
 import LiveCourse from './LiveCourse';
 import ViewHeader from './ViewHeader';
+import ViewList from './ViewList';
 
 export{
     CourseType,
@@ -25,5 +26,6 @@ export{
     TrainingCourse,
     Loading,
     LiveCourse,
-    ViewHeader
+    ViewHeader,
+    ViewList
 }

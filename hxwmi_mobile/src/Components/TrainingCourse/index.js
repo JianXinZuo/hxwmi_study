@@ -19,7 +19,7 @@ class TrainingCourse extends Component {
             <div>
                 <DividingLine></DividingLine>
                 <WingBlank>
-                    <IndexTitle Text="专题训练班" />
+                    <IndexTitle Text="专题训练班" MoreUrl="/training_course"/>
                 </WingBlank>
                 <CourseList list={this.props.list}/>
             </div>

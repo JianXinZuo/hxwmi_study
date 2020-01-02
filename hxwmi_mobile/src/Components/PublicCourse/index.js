@@ -14,6 +14,10 @@ class PublicCourse extends Component {
         super(props);
     }
     
+    GotoMoreIndex =()=>{
+
+    }
+
     render() {
         // console.log(this.props);
         const { list } = this.props;
@@ -29,7 +33,7 @@ class PublicCourse extends Component {
             <div>
                 <DividingLine></DividingLine>
                 <WingBlank>
-                    <IndexTitle Text="公开课" />
+                    <IndexTitle Text="公开课" MoreUrl="/public_course" />
                 </WingBlank>
                 <div className="public_course_list">
                     {

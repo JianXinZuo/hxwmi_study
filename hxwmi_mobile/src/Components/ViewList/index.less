@@ -1,0 +1,85 @@
+.common_course_listview{
+    // border: solid 1px #0f0; 
+    height: calc(100% - 4.1rem);
+    width: 99%;
+    position:absolute;
+    overflow-y: scroll;
+    background-color: white;
+}
+
+.common_course_item{
+    display: flex;
+    flex-direction: row;
+    width: 99%;
+    height: auto;
+    // border: solid 1px red;
+    justify-content: flex-start;
+    align-items: flex-start;
+    // padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+}
+.common_course_item:first-of-type{
+    padding-top: 1.2rem;
+}
+
+.common_course_item .common_course_item_left{
+    flex-basis: 30%;
+    padding-left: 1rem;
+    height: 5rem;
+}
+.common_course_item .common_course_item_left img{
+    width: 90%;
+    height: 5rem;
+}
+.common_course_item .common_course_item_right{
+    flex-basis: 70%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    white-space: nowrap;
+    overflow: hidden;
+    border-bottom: #E1E1E1 solid 1px;
+    height: 5rem;
+}
+.course_item_name{
+    width: 100%;
+    font-size: 1.1rem;
+    height: 1.6rem;
+    // font-weight:bold;
+    line-height: 1.6rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.course_item_online_number{
+    width: 100%;
+    font-size: 1rem;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    color: #999999;
+}
+.common_course_item .free{
+    font-size: 1rem;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    color: #42C48F;
+    width: 100%;
+    justify-self: end;
+}
+.common_course_item .price {
+    color: #FE9808;
+}
+.common_course_item .teacher{    
+    padding-right: 1rem;
+
+}
+
+.common_course_notfound{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+.common_course_notfound img{
+    width: 70%;
+}

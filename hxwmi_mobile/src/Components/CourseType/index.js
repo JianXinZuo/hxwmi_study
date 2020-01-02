@@ -24,22 +24,22 @@ class CourseType extends Component {
                 {
                     text: '公开课',
                     icon: icon_public_course,
-                    url:'/Login'
+                    url:'/public_course'
                 },
                 {
                     text:'专题班',
                     icon:icon_training_course,
-                    url:'/TrainingCourse'
+                    url:'/training_course'
                 },
                 {
                     text: '系统班',
                     icon: icon_system_course,
-                    url:'/PublicCourse'
+                    url:'/system_course'
                 },
                 {
                     text: '直播课',
                     icon: icon_live,
-                    url:'/PublicCourse'
+                    url:'/live_course'
                 },
                 {
                     text: '必刷题库',

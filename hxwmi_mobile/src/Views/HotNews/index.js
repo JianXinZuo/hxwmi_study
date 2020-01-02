@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { ViewHeader } from '../../Components';
 import { withRouter} from 'react-router-dom';
 import './index.less';
-import { PullToRefresh,ListView  } from 'antd-mobile';
 import { GetHotNews_Async } from '../../Services/index';
 import moment from 'moment';
 
@@ -13,11 +11,6 @@ class HotNews extends Component {
     constructor(props) {
         super(props);
 
-        //初始化ListView数据源
-        const dataSource = new ListView.DataSource({  
-            rowHasChanged: (row1, row2) => row1 !== row2,
-        });
-
         //定义分页信息
         this.pageNo = 0;
         this.dateFormat = 'YYYY-MM-DD',
@@ -25,21 +18,23 @@ class HotNews extends Component {
         this.state = {
             list:[],
             OpenPage:false,
-            dataSource,
             refreshing: true,
             isLoading: true,
             height: document.documentElement.clientHeight,
             useBodyScroll: false,
             hasMore: true,
+            is_running:false
         }
     }
 
     async componentDidMount() {
         
-        this.setState({
-            OpenPage:true
-        });
-
+        setTimeout(() => {
+            this.setState({
+                OpenPage:true
+            });
+        }, 0);
+        
         let list = await this.GetList_Async();
 
         if(list){
@@ -56,7 +51,7 @@ class HotNews extends Component {
         this.pageNo++     //每次下拉的时候pageNo++
         let subject_id = localStorage.getItem('SubMajor_Id');
         let params = {  
-            "subject_id": subject_id || "557",
+            "subject": subject_id || "557",
             "user_token":"67e2ce3346d946e1a9ac4ede6bfd7dd7",
             "page":this.pageNo,
             "limit":10
@@ -72,9 +67,13 @@ class HotNews extends Component {
 
     onRefresh = async () => {
 
-        this.setState({ refreshing: true, isLoading: true });
+        if(!this.state.hasMore){
+            return;
+        }
+
+        this.setState({ refreshing: true, isLoading: true, is_running:true });
         let list = await this.GetList_Async();
-        this.setState({ refreshing: false, isLoading: false });
+        this.setState({ refreshing: false, isLoading: false,is_running:false });
 
         if(!list || list.length === 0){
 
@@ -88,11 +87,6 @@ class HotNews extends Component {
                 list: [...this.state.list,...list],
             });
         }
-        const dom = ReactDOM.findDOMNode(this.container);
-        console.log(dom);
-        
-        const height = this.state.height - dom.offsetTop;
-        console.log('height:',height);
     };
     
     GoToIndex = async ()=>{
@@ -105,12 +99,32 @@ class HotNews extends Component {
         }, 690);
     }
 
+    ScrollHandler = async (e)=>{
+        let dom = e.target;
+
+        let position = {
+            top: dom.scrollTop,
+            left: dom.scrollLeft,
+            width: dom.scrollWidth,
+            height: dom.scrollHeight,
+            clientHeight: dom.clientHeight  //div的可视区域
+        };
+        
+        console.log('offset:',position);
+
+        //下拉到最底部加载下一页
+        if(position.height - position.top <= dom.clientHeight){
+            //alert('已经滑动到底部');
+            this.state.is_running === false &&  await this.onRefresh();
+        }
+    }
+
     render() {
         //这里就是个渲染数据，rowData就是每次过来的那一批数据，已经自动给你遍历好了，rouID可以作为key值使用，直接渲染数据即可
         const rows = this.state.list.map((item) => {
             return (
                 <div key={item.id} className="hotnews_item">
-                    <div className="hotnews_item_text">{item.article_title}</div>
+                    <div className="hotnews_item_text">{ item.article_title }</div>
                     <div className="hotnews_item_date">{ moment(item.create_time).format(this.dateFormat) }</div>
                 </div>
             );
@@ -120,15 +134,18 @@ class HotNews extends Component {
             <div className={ this.state.OpenPage ? "hot_news_index active" : "hot_news_index" }>
                 <ViewHeader title="全部资讯" onClick={ this.GoToIndex } />
                 
-                <div className="hotnews_listview" ref={el => this.container = el}>
+                <div className="hotnews_listview" ref={el => this.container = el} onScroll={ this.ScrollHandler }>
                     {
                         rows
                     }
                     <div 
                         className="hotnews_listview_footer" 
                         onClick={ this.onRefresh }
-                        ref={el => this.bottom = el}
-                    >点击或下拉加载数据...</div>
+                    >
+                        {
+                            this.state.hasMore ?"点击或下拉加载数据...":"暂无更多数据"
+                        }
+                    </div>
                 </div>
 
             </div>

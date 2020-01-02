@@ -5,6 +5,7 @@ import IndexTitle from '../IndexTitle';
 import { 
     WingBlank,
 } from 'antd-mobile';
+import notfound from './images/notfound.png';
 
 class GoodBook extends Component {
     render() {
@@ -13,7 +14,7 @@ class GoodBook extends Component {
         const bookList = list.map((item)=>{  
             return (
                 <div className="good_book_list_item" key={ item.id }>
-                    <img src={ item.cover } alt={ item.name } />
+                    <img src={ item.cover || notfound } alt={ item.name } />
                     <div className="good_book_item_title">{ item.name }</div>
                     <div className="good_book_item_desc">
                         <span className="good_book_item_desc_price">￥{ item.price }</span>
@@ -27,7 +28,7 @@ class GoodBook extends Component {
             <div>
                 <DividingLine></DividingLine>
                 <WingBlank>
-                    <IndexTitle Text="好书推荐" />
+                    <IndexTitle Text="好书推荐" MoreUrl="/good_book" />
                 </WingBlank>
                 <div className="good_book_list">
                     {                
