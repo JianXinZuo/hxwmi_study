@@ -13,7 +13,8 @@ import {
     LiveCourse,
     SystemCourse,
     TrainingCourse,
-    GoodBook
+    GoodBook,
+    CourseDetail
 
 } from '../Views';
 
@@ -23,47 +24,63 @@ export const mainRouter = [
         pathname:'/index',      //网站首页
         component: Index,
         title:'首页',
+        exact: false,
     },{
         pathname:'/login',      //登录页面
         component: Login,
-        title:'登录'
+        title:'登录',
+        exact: false,
     },{
         pathname:'/404',        //404页面
         component: NotFound,
-        title:'未找到'
+        title:'未找到',
+        exact: false,
     },{
         pathname:'/select_major',        //选择专业
         component: SelectMajor,
-        title:'选择专业'
+        title:'选择专业',
+        exact: false,
     },{
         pathname:'/hotnews',        //热门头条
         component: HotNews,
-        title:'热门头条' 
+        title:'热门头条',
+        exact: false,
     },{
         
         pathname:'/public_course',        //公开课
         component: PublicCourse,
-        title:'公开课' 
+        title:'公开课',
+        exact: false,
     },{
         
         pathname:'/live_course',        //直播课
         component: LiveCourse,
-        title:'直播课' 
+        title:'直播课',
+        exact: false,
     },{
         
         pathname:'/system_course',        //全程系统班
         component: SystemCourse,
-        title:'全程系统班' 
+        title:'全程系统班',
+        exact: false,
     },{
         
         pathname:'/training_course',        //专题训练班
         component: TrainingCourse,
-        title:'专题训练班' 
+        title:'专题训练班',
+        exact: false, 
     },{
         
         pathname:'/good_book',        //商品列表
         component: GoodBook,
-        title:'商品列表' 
+        title:'商品列表',
+        exact: false,
+    },{
+        
+        pathname:'/course_detail/:id/:type',        //商品列表
+        component: CourseDetail,
+        title:'商品列表',
+        exact: false,
     }
     
     // {

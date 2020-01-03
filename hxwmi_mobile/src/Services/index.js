@@ -45,10 +45,20 @@ const GetGoodList_Async = async (params)=>{
     return null;
 }
 
+//获取组合课程详情页
+const GetCourseDetail_Async = async (params)=>{
+    const response = await Axios.PostHeader(`/piece/CombinShow/combinsDetail?info=${params}`,null);
+    if(response.status === 200 && response.statusText === "OK"){
+        return response.data;
+    }
+    return null;
+}
+
 export {
     Axios_Get_IndexContent,
     Axios_Get_MajorAll,
     GetHotNews_Async,
     GetCourseList_ByType_Async,
-    GetGoodList_Async
+    GetGoodList_Async,
+    GetCourseDetail_Async
 };

@@ -43,7 +43,7 @@ class Index extends Component {
                         {
                             indexRouter.map((route)=>{
                                 return (
-                                    <Route key={ route.pathname } path={ route.pathname } exact={ route.exact } 
+                                    <Route key={ route.pathname } path={ route.pathname } exact={ route.exact } title={ route.title || "" }
                                         render={ (routerProps) => {
                                             return <route.component { ...routerProps } />
                                         }

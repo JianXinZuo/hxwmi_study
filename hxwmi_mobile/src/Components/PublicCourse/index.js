@@ -7,15 +7,21 @@ import {
 } from 'antd-mobile';
 import CourseItemByFree from './course_item_free';
 import CourseItemByPrice from './course_item_price';
+import { withRouter } from 'react-router-dom';
 
+@withRouter
 class PublicCourse extends Component {
 
     constructor(props) {
         super(props);
     }
     
-    GotoMoreIndex =()=>{
-
+    GoToCourseDetail =(id)=>{
+        console.log('111',id);
+        if(id){
+            const url = (`/course_detail/${id}/1`);
+            this.props.history.push(url);
+        }
     }
 
     render() {
@@ -24,7 +30,7 @@ class PublicCourse extends Component {
         const courseList = list.map((item)=>{
             
             if(item.charge === 0){
-                return <CourseItemByFree key={ item.id } {...item } />
+                return <CourseItemByFree key={ item.id } {...item }  onClick={ this.GoToCourseDetail } />
             }else{
                 return <CourseItemByPrice key={ item.id } {...item } />
             }

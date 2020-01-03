@@ -12,7 +12,7 @@ ReactDOM.render(
             <Switch>
                     {
                         mainRouter.map(route =>{
-                            return <Route key={ route.pathname } path={ route.pathname } component={ route.component }></Route>
+                            return <Route key={ route.pathname } path={ route.pathname } exact={ route.exact } component={ route.component } title={ route.title || "" }></Route>
                         })
                     }
                     <Redirect to="/index" from="/" exact/>

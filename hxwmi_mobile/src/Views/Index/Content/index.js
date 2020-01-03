@@ -44,7 +44,6 @@ class Index extends Component {
 
             ListView = list.rows.map((item)=>{
                 const MyComponent= item.type;
-                const arr = item.list;
 
                 if(item.name === 'CourseType' || item.list && item.list.length >0){
                     return (

@@ -38,6 +38,11 @@ class SelectMajor extends Component {
                 select_sub_major: subId,
                 show_page:'select_major_index active'
             });
+
+            if(id){
+                let major_id = `major_${id}`;
+                document.getElementById(major_id).scrollIntoView();
+            }
         }, 10);
     }
 

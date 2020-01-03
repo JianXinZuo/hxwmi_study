@@ -4,6 +4,7 @@ import { ViewHeader } from '../../Components';
 import { withRouter } from 'react-router-dom';
 import './index.less';
 import { GetGoodList_Async } from '../../Services';
+import { Toast } from 'antd-mobile';
 
 @withRouter
 class GoodBook extends Component {
@@ -26,6 +27,10 @@ class GoodBook extends Component {
     
     async componentDidMount() {
         
+        Toast.loading('Loading...', 1.5, () => {
+            console.log('加载完成 !!!');
+        });
+
         setTimeout(() => {
             this.setState({
                 OpenPage:true

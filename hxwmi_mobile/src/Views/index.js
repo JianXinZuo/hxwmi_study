@@ -130,6 +130,12 @@ const GoodBook = Loadable({
     loading: Loading
 });
 
+//课程详情
+const CourseDetail = Loadable({
+    loader:()=> import('./CourseDetail'),
+    loading: Loading
+}); 
+
 export{
     Login,
     NotFound,
@@ -145,5 +151,6 @@ export{
     LiveCourse,
     SystemCourse,
     TrainingCourse,
-    GoodBook
+    GoodBook,
+    CourseDetail
 }

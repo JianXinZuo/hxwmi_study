@@ -11,7 +11,9 @@ class CourseItemFree extends Component {
         // console.log(this.props);
         const { id, cover, name, studyCount } = this.props;
         return (
-            <div className="public_course_list_item" key={id}>
+            <div className="public_course_list_item" key={id} onClick={()=>{
+                this.props.onClick(id);
+            }}>
                 <img src={ cover } alt={ name }/>
                 <div className="course_list_item_title">{ name }</div>
                 <div className="course_list_item_desc">
