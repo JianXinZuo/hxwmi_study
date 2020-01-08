@@ -306,7 +306,7 @@
     -moz-transform: skew(0deg,0deg);	/* Firefox */
 }
 .course_detail_index .course_type_list{
-    position: fixed;
+    position: absolute;
     width: 0;
     top: 5%;
     height: 0%;
@@ -346,4 +346,42 @@
 }
 .course_type_list::-webkit-scrollbar {
     display: none;
+}
+
+.course_tab_item .course_listview{
+    width: 100%;
+    padding: 0 1rem;
+    // border: solid 1px red;
+
+}
+.course_tab_item .course_listview .course_item_view{
+    width: 100%;
+    min-height: 4rem;
+    border: solid 1px red;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+.course_listview .am-accordion .am-accordion-item .am-accordion-header{
+    font-size: 1.1rem;
+    color: #333333;
+}
+.course_listview .course_itemview{
+    font-size: 1.1rem;
+    color: #333333;
+    padding-left: 2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.course_type_list_panel.active{
+    display: block;
+}
+.course_type_list_panel{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.5);
 }

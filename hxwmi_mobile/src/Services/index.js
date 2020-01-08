@@ -54,11 +54,31 @@ const GetCourseDetail_Async = async (params)=>{
     return null;
 }
 
+//获取课程详情页面的章列表
+const GetCourseDetailChapterList_Async = async (params)=>{
+    const response = await Axios.PostHeader(`/piece/CombinShow/getCombinChapterList?info=${params}`,null);
+    if(response.status === 200 && response.statusText === "OK"){
+        return response.data;
+    }
+    return null;
+}
+
+//获取课程详情页面的节列表
+const GetCourseDetailLessonList_Async = async (params)=>{
+    const response = await Axios.PostHeader(`/piece/CombinShow/getCombinLessonList?info=${params}`,null);
+    if(response.status === 200 && response.statusText === "OK"){
+        return response.data;
+    }
+    return null;
+}
+
 export {
     Axios_Get_IndexContent,
     Axios_Get_MajorAll,
     GetHotNews_Async,
     GetCourseList_ByType_Async,
     GetGoodList_Async,
-    GetCourseDetail_Async
+    GetCourseDetail_Async,
+    GetCourseDetailChapterList_Async,
+    GetCourseDetailLessonList_Async,
 };
