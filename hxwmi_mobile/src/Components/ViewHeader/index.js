@@ -16,7 +16,7 @@ class ViewHeader extends Component {
     render() {
         return (
             <div className="view_header">
-                <div className="view_header_conent">
+                <div className="view_header_conent" style={ this.props.style }>
                     <Icon type={"left"} color="#000" onClick={ this.click_Handler }></Icon>
                     <div className="header_title">
                         {this.props.title}

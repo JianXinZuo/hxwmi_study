@@ -119,11 +119,18 @@ class HotNews extends Component {
         }
     }
 
+    GoToDetail = (url)=>{
+        window.open(url);
+    }
+
+
     render() {
         //这里就是个渲染数据，rowData就是每次过来的那一批数据，已经自动给你遍历好了，rouID可以作为key值使用，直接渲染数据即可
         const rows = this.state.list.map((item) => {
             return (
-                <div key={item.id} className="hotnews_item">
+                <div key={item.id} className="hotnews_item" onClick={ ()=>{
+                    this.GoToDetail(item.article_url)
+                }}>
                     <div className="hotnews_item_text">{ item.article_title }</div>
                     <div className="hotnews_item_date">{ moment(item.create_time).format(this.dateFormat) }</div>
                 </div>

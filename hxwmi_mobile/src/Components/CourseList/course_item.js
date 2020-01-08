@@ -19,7 +19,9 @@ class CourseItem extends Component {
         }
 
         return (
-            <div className="course_list_item" key={id}>
+            <div className="course_list_item" key={id} onClick={()=>{
+                this.props.onClick(id);
+            }}>
                 <img src={ cover|| notfound } alt={ name }/>
                 <div className="course_list_item_title">{ name }</div>
                 <div className="course_list_item_desc">
