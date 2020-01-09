@@ -1,0 +1,112 @@
+.my_Course_index .view_header{
+    height: 4.1rem;
+    width: 100%;
+    background-color: white;
+}
+.my_Course_index .view_header_conent{
+    position: fixed;
+    background-color: white;
+    z-index: 2;
+    height: 4.1rem;
+    line-height: 4.1rem;
+    display: flex;
+    white-space: nowrap;
+    width: 99.9%;
+    border-bottom: solid 1px #e1e1e1;
+}
+.my_Course_index .view_header_conent .header_title{
+    flex-basis: 100%;
+    flex-shrink: 0;
+    text-align: center;
+    padding-right: 1rem;
+    // font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.view_body .am-tabs-tab-bar-wrap{
+    height: 3.6rem;
+}
+.view_body .course_tab_item{
+    // position: absolute;
+    // border: solid 1px red;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    touch-action: auto;
+    -webkit-overflow-scrolling:touch;
+}
+.view_body .am-tabs-content-wrap{
+    position: fixed;
+    top:7.7rem;
+    width: 100%;
+    // overflow-y: auto;
+    height: calc(100% - 11.8rem);
+}
+.my_Course_index .my_course_item{
+    // border: solid 1px red;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    justify-content: flex-start;
+    align-items: center;
+    height: 6rem;
+    padding: 0 1rem;
+    padding-top: 1rem;
+    background-color: white;
+}
+.my_Course_index .my_course_item .my_course_item_left{
+    flex-basis: 30%;
+    height: 5rem;
+    // border: solid 1px red;
+}
+.my_Course_index .my_course_item .my_course_item_left img{
+    width: 90%;
+    height: 5rem;
+}
+.my_Course_index .my_course_item .my_course_item_center{
+    flex-basis: 58%;
+    height: 5rem;
+    // border: solid 1px red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+.my_Course_index .my_course_item .my_course_item_center .title{
+    height: 2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #333;
+}
+.my_Course_index .my_course_item .my_course_item_center .teacher{
+    height: 2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    color: #999;
+}
+.my_Course_index .my_course_item .my_course_item_right{
+    flex-basis: 22%;
+    height: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1.2rem;
+}
+.my_course_item_right a{
+    display: block;
+    border: solid 1px #ff8004;;
+    width: 100%;
+    text-align: center;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    border-radius: 1.6rem;
+    font-size: 0.8rem;
+    color: #ff8004;
+    
+}

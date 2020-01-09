@@ -14,7 +14,8 @@ import {
     SystemCourse,
     TrainingCourse,
     GoodBook,
-    CourseDetail
+    CourseDetail,
+    CoursePlayer,
 
 } from '../Views';
 
@@ -77,8 +78,13 @@ export const mainRouter = [
         exact: false,
     },{
         
-        pathname:'/course_detail/:id/:type',        //商品列表
+        pathname:'/course_detail/:id/:type',        //课程详情页
         component: CourseDetail,
+        title:'商品列表',
+        exact: false,
+    },{
+        pathname:'/course_player/:id/:book_type/:cas_id',        //课程
+        component: CoursePlayer,
         title:'商品列表',
         exact: false,
     }

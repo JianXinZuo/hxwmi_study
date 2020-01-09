@@ -136,6 +136,12 @@ const CourseDetail = Loadable({
     loading: Loading
 }); 
 
+//课程播放页面
+const CoursePlayer = Loadable({
+    loader:()=> import('./CoursePlayer'),
+    loading: Loading
+}); 
+
 export{
     Login,
     NotFound,
@@ -152,5 +158,6 @@ export{
     SystemCourse,
     TrainingCourse,
     GoodBook,
-    CourseDetail
+    CourseDetail,
+    CoursePlayer,
 }

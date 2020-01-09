@@ -19,6 +19,11 @@ const GetHotNews_Async = async (params)=>{
     const response = await Axios.PostHeader(`/piece/ArticleShow/articleList?info=${params}`,null);
     
     if(response.status === 200 && response.statusText === "OK"){
+        
+        // if(response.data.code==="300"){
+        //     window.location.href="/login"
+        // }
+
         return response.data;
     }
 
@@ -67,10 +72,22 @@ const GetCourseDetailChapterList_Async = async (params)=>{
 const GetCourseDetailLessonList_Async = async (params)=>{
     const response = await Axios.PostHeader(`/piece/CombinShow/getCombinLessonList?info=${params}`,null);
     if(response.status === 200 && response.statusText === "OK"){
+        
         return response.data;
     }
     return null;
 }
+
+//我的课
+const GetMyCourseList_Async = async (params)=>{
+    const response = await Axios.PostHeader(`/piece/CombinShow/myCombin?info=${params}`,null);
+    if(response.status === 200 && response.statusText === "OK"){
+        
+        return response.data;
+    }
+    return null;
+}
+
 
 export {
     Axios_Get_IndexContent,
@@ -81,4 +98,5 @@ export {
     GetCourseDetail_Async,
     GetCourseDetailChapterList_Async,
     GetCourseDetailLessonList_Async,
+    GetMyCourseList_Async,
 };

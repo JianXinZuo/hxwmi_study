@@ -15,6 +15,8 @@ import icon_question_bank from './images/icon_question_bank.png';
 import icon_gift from './images/icon_gift.png';
 import icon_heart from './images/icon_heart.png';
 import icon_teacher from './images/icon_teacher.png';
+import icon_ellipse from './images/icon_ellipse.png';
+import icon_lock from './images/icon_lock.png';
 
 import { 
     GetCourseDetail_Async,
@@ -235,18 +237,6 @@ class CourseDetail extends Component {
         });
     }
 
-    // ScrollHandler = async (e)=>{
-    //     let dom = e.target;
-
-    //     let position = {
-    //         top: dom.scrollTop,
-    //         left: dom.scrollLeft,
-    //         width: dom.scrollWidth,
-    //         height: dom.scrollHeight,
-    //         clientHeight: dom.clientHeight  //div的可视区域
-    //     };
-    // }
-
     OpenTitlePanel = ()=>{
         
         if(!this.state.isOpenTitlePanel){
@@ -312,6 +302,18 @@ class CourseDetail extends Component {
             lessonList:lessonList
         })
         console.log('获取节的列表:', lessonList);
+    }
+
+    //购买课程
+    ToBuyCourse = ()=>{
+
+    }
+
+    //跳转到课程详情页
+    ToCourseDetailList = (obj)=>{
+        
+        const url = `/course_player/${this.props.match.params.id}/${this.state.currentcourseType.combinBookType}/${ this.state.currentcourseType.cas_id}`; // :id/type:
+        this.props.history.push(url);
     }
 
     render() {
@@ -444,15 +446,37 @@ class CourseDetail extends Component {
             </div>
         ): null;
 
+        // 课程子节内容
         let LessonList = (
             <List className="my-list">
                 {
                     this.state.lessonList.map(item=>{
-                        return (
-                            <List.Item key={item.id}>
-                                <div className="course_itemview" title={item.name}>{ item.name }</div>
-                            </List.Item>
-                        )
+
+                        if(this.state.charge === 2){
+                            return (
+                                <List.Item key={item.id} onClick={()=>{
+                                    console.log('点击查看详情');
+                                    this.ToCourseDetailList();
+                                }}>
+                                    <div className="course_itemview" title={item.name}>
+                                        <div className="course_item_icon"><img src={icon_ellipse} alt=""/></div>
+                                        <div>{ item.name }</div> 
+                                    </div>
+                                </List.Item>
+                            )
+                        }else{
+                            return (
+                                <List.Item key={item.id} onClick={()=>{
+                                    console.log('你还未购买课程，点击后购买课程');
+                                    this.ToCourseDetailList(item);//this.ToBuyCourse();
+                                }}>
+                                    <div className="course_itemview" title={item.name}>
+                                        <div className="course_item_icon"><img src={icon_lock} alt=""/></div>
+                                        <div className="course_item_txt">{ item.name }</div> 
+                                    </div>
+                                </List.Item>
+                            )
+                        }
                     })
                 }
             </List>
