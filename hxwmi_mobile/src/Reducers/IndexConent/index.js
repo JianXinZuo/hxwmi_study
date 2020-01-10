@@ -178,7 +178,10 @@ export default (state =initState, action)=>{
             result.list.rows.forEach(item => {
                 // console.log(item);
                 if(item.apiKey){
-                    item.list = res[item.apiKey]
+
+                    if(res && res[item.apiKey]){
+                        item.list = res[item.apiKey]
+                    }
                 }
             });
 

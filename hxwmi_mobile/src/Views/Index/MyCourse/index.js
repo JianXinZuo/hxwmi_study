@@ -80,7 +80,7 @@ class MyCourse extends Component {
 
     //刷新加载数据
     onRefresh = async ()=>{
-        
+
         let res = await this.GetCourseList();
         console.log(res);
 
@@ -94,7 +94,6 @@ class MyCourse extends Component {
                 hasMore:false
             });
         }
-
     }
     
     render() {

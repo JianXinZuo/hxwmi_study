@@ -85,7 +85,7 @@ class SelectMajor extends Component {
         const { list } = this.props;
         let firstList = null, lastList = null;
 
-        firstList = list.map((item)=>{
+        firstList = list && list.map((item)=>{
             return (
                 <div 
                     key={item.id}
@@ -97,7 +97,7 @@ class SelectMajor extends Component {
             );
         });
 
-        lastList = list.map((item)=>{
+        lastList = list && list.map((item)=>{
             return (
                 <div className="major_right_item" key={item.id}>
                     <div className="major_title" id={ `major_${ item.id }`}>{ item.name }</div>
