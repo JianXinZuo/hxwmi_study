@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './index.less';
 import { connect } from 'react-redux';
 import { FetchIndex } from '../../../Actions/IndexContent';
-import { ListView } from 'antd-mobile';
 import { MyHeader } from '../../../Components';
 
 const mapStateToProps = (state)=>{
