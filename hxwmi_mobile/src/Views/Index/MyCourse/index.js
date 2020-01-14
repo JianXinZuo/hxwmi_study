@@ -36,7 +36,7 @@ class MyCourse extends Component {
         this.pageNo++;
 
         let params = {
-            user_token:'',
+            user_token: localStorage.getItem('accessToken') || "",
             show_type:'1',  //显示类型 1:公开课   2:专题班   3:系统班  4:直播课
             page: this.pageNo,
             limit:'5'

@@ -6,7 +6,7 @@ const baseUrl = "/api";
 axios.interceptors.request.use(
     config => {
 
-        let token = window.localStorage.getItem("accessToken"); //设置Jwt认证Token
+        let token = window.localStorage.getItem("accessToken1"); //设置Jwt认证Token
 
         if (token) {
             config.headers['accessToken'] = Token;  //将token放到请求头发送给服务器,将tokenkey放在请求头中

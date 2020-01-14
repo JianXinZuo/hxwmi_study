@@ -1,0 +1,154 @@
+.register_index {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    top: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.register_view_header{
+    height: 4.1rem;
+    width: 100%;
+    // border: solid 1px red;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: solid 1px #ccc;
+    background-color: white;
+}
+.register_view_header .register_view_header_icon{
+    flex-basis: 15%;
+    // border: solid 1px #0f0;
+    height: 4rem;
+    text-align: center;
+}
+.register_view_header .register_view_header_icon svg{
+    color: #333;
+    height: 4rem;
+    width: 2.5rem;
+}
+
+.register_view_header .register_view_header_title{
+    flex-basis: 85%;
+    // border: solid 1px #0f0;
+    height: 4rem;
+    line-height: 4rem;
+    text-align: center;
+    padding-right: 10%;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.register_view_body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // background-color: white;
+}
+
+.register_view_body .input_icon{
+    width: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+// .register_view_body .input_icon img{
+// }
+.register_view_body .inputbox{
+    height: 3rem;
+    width: 90%;
+    border: solid 1px #e1e1e1;
+    line-height: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 1.5rem;
+    margin-top:1rem;
+    background-color: white;
+}
+.register_view_body input{
+    width: 80%;
+    background: white;
+	outline: none;
+	border: none;
+}
+.register_view_body input:focus{   
+    border:none;
+    outline: none;
+	border: none;
+}
+.register_view_body .verification_code{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1rem;
+}
+.register_view_body .verification_code .inputbox{
+    margin: 0;
+    width: 70%;
+}
+.register_view_body .verification_code .inputbox input{
+    width: 70%;
+}
+
+.register_view_body .verification_code .verification_code_btn{
+    margin-left: 5%;
+    width: 25%;
+    text-align: center;
+    color: #ff8004;
+    background-color: white;
+    height: 3rem;
+    border: solid 1px #ff8004;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+.register_view_body .verification_code .validate_time{
+    margin-left: 5%;
+    width: 25%;
+    text-align: center;
+    color: #333;
+    background-color: #fff;
+    height: 3rem;
+    border: solid 1px #ff8004;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+.register_btn{
+    margin: 1rem 0;
+    background-image: url(./images/background_login_btn.png);
+    width: 90%;
+    height: 3.2rem;
+    background-size:100% 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.register_index .register_logo{
+    width: 100%;
+    // height: 10rem;
+    padding-top:4rem;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.register_index .register_logo img{
+    width: 5rem;
+}

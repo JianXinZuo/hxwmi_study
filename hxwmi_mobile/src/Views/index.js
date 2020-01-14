@@ -84,7 +84,13 @@ const NotFound = Loadable({
 
 //登录
 const Login = Loadable({
-    loader:()=> import('./Login/index'),
+    loader:()=> import('./Login'),
+    loading: Loading
+});
+
+//注册
+const Register = Loadable({
+    loader:()=> import('./Register'),
     loading: Loading
 });
 
@@ -144,6 +150,7 @@ const CoursePlayer = Loadable({
 
 export{
     Login,
+    Register,
     NotFound,
     Index,
     IndexContent,

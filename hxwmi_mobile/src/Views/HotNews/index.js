@@ -52,7 +52,7 @@ class HotNews extends Component {
         let subject_id = localStorage.getItem('SubMajor_Id');
         let params = {  
             "subject": subject_id || "557",
-            "user_token":"67e2ce3346d946e1a9ac4ede6bfd7dd7",
+            "user_token": localStorage.getItem('accessToken')|| "",
             "page":this.pageNo,
             "limit":10
         }

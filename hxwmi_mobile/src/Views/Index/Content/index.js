@@ -22,11 +22,13 @@ class Index extends Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount (){
         let subject_id = localStorage.getItem('SubMajor_Id');
+        let token = localStorage.getItem('accessToken');
+
         let params = {  
-            "subject_id": subject_id || "557",
-            "user_token":"67e2ce3346d946e1a9ac4ede6bfd7dd7"
+            subject_id: subject_id || "557",
+            user_token: token || ""
         }
         this.props.FetchIndex(JSON.stringify(params));
     }

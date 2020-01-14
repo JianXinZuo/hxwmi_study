@@ -55,9 +55,9 @@ class GoodBook extends Component {
         let subject_id = localStorage.getItem('SubMajor_Id');
         let params = {  
             "subject": subject_id || "557",
-            "user_token":"67e2ce3346d946e1a9ac4ede6bfd7dd7",
+            "user_token": localStorage.getItem('accessToken') ||"",
             "page": this.pageNo,
-            "limit":'10'
+            "limit":'4'
         }
 
         let res = await GetGoodList_Async(JSON.stringify(params));
@@ -158,11 +158,14 @@ class GoodBook extends Component {
                     )
                 }
 
-                <div className="top_images">
+                {/* <div className="top_images">
                     <img src={ this.state.cover } alt=""/>
-                </div>
+                </div> */}
 
                 <div className="goodbook_listview" onScroll={ this.ScrollHandler }>
+                    <div className="top_images">
+                        <img src={ this.state.cover } alt=""/>
+                    </div>
                     {
                         rows
                     }

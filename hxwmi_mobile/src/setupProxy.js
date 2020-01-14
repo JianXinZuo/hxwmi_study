@@ -6,7 +6,8 @@ module.exports = function(app) {
     app.use(
         proxy("/api", {
             // target: "http://jsonplaceholder.typicode.com/",
-            target: "http://brace.wm319.com",
+            // target: "http://brace.wm319.com",
+            target: "http://m.wm319.com:9001",
             changeOrigin: true, // needed for virtual hosted sites
             ws: true, // proxy websockets
             secure: false, //如果是https接口 需要配置这个参数为true

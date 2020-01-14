@@ -46,7 +46,7 @@ class CoursePlayer extends Component {
             "combin_chapter_id": res_chapter[0].id,
             "combin_book_type": this.props.match.params.book_type,  
             "combin_id": this.props.match.params.id || '',
-            "user_token":"67e2ce3346d946e1a9ac4ede6bfd7dd7",
+            "user_token": localStorage.getItem('accessToken')|| "",
         }
 
         let res_lesson = await this.GetLessonList_Async(params);
@@ -72,7 +72,7 @@ class CoursePlayer extends Component {
 
         let params = {  
             "combin_id": this.props.match.params.id || "",
-            "user_token":"67e2ce3346d946e1a9ac4ede6bfd7dd7",
+            "user_token": localStorage.getItem('accessToken')|| "",
         }
 
         let res = await GetCourseDetail_Async(JSON.stringify(params));
@@ -90,7 +90,7 @@ class CoursePlayer extends Component {
         let params = {
             "combin_book_type": this.props.match.params.book_type,  //课程内容类型  1视频 2直播 3自建视频
             "cas_id": this.props.match.params.cas_id,
-            "user_token":"67e2ce3346d946e1a9ac4ede6bfd7dd7",
+            "user_token": localStorage.getItem('accessToken')|| "",
         }
 
         let res = await GetCourseDetailChapterList_Async(JSON.stringify(params));
@@ -128,7 +128,7 @@ class CoursePlayer extends Component {
             "combin_chapter_id": id,
             "combin_book_type": this.props.match.params.book_type,  
             "combin_id": this.props.match.params.id || '',
-            "user_token":"67e2ce3346d946e1a9ac4ede6bfd7dd7",
+            "user_token": localStorage.getItem('accessToken') || "",
         }
 
         let lessonList = await this.GetLessonList_Async(params);

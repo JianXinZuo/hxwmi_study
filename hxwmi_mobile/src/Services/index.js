@@ -3,20 +3,20 @@ import { Axios } from './api_config';
 
 const Axios_Get_IndexContent = async (params)=>{
     return (
-        await Axios.PostHeader(`/piece/base/index_combin?info=${params}`,null)
+        await Axios.PostHeader(`/m/base/index_combin?info=${params}`,null)
     );
 }
 
 const Axios_Get_MajorAll = async ()=>{
     return (
-        await Axios.Get('/piece/base/getcategory')
+        await Axios.Get('/m/base/getcategory')
     );
 }
 
 //获取热门头条
 const GetHotNews_Async = async (params)=>{
     
-    const response = await Axios.PostHeader(`/piece/ArticleShow/articleList?info=${params}`,null);
+    const response = await Axios.PostHeader(`/m/ArticleShow/articleList?info=${params}`,null);
     
     if(response.status === 200 && response.statusText === "OK"){
         
@@ -32,7 +32,7 @@ const GetHotNews_Async = async (params)=>{
 
 //根据类型获取课程列表
 const GetCourseList_ByType_Async = async (params)=>{
-    const response = await Axios.PostHeader(`/piece/CombinShow/secondaryList?info=${params}`,null);
+    const response = await Axios.PostHeader(`/m/CombinShow/secondaryList?info=${params}`,null);
     
     if(response.status === 200 && response.statusText === "OK"){
         return response.data;
@@ -43,7 +43,7 @@ const GetCourseList_ByType_Async = async (params)=>{
 
 //获取商品列表
 const GetGoodList_Async = async (params)=>{
-    const response = await Axios.PostHeader(`/piece/gooShow/gooList?info=${params}`,null);
+    const response = await Axios.PostHeader(`/m/gooShow/gooList?info=${params}`,null);
     if(response.status === 200 && response.statusText === "OK"){
         return response.data;
     }
@@ -52,7 +52,7 @@ const GetGoodList_Async = async (params)=>{
 
 //获取组合课程详情页
 const GetCourseDetail_Async = async (params)=>{
-    const response = await Axios.PostHeader(`/piece/CombinShow/combinsDetail?info=${params}`,null);
+    const response = await Axios.PostHeader(`/m/CombinShow/combinsDetail?info=${params}`,null);
     if(response.status === 200 && response.statusText === "OK"){
         return response.data;
     }
@@ -61,7 +61,7 @@ const GetCourseDetail_Async = async (params)=>{
 
 //获取课程详情页面的章列表
 const GetCourseDetailChapterList_Async = async (params)=>{
-    const response = await Axios.PostHeader(`/piece/CombinShow/getCombinChapterList?info=${params}`,null);
+    const response = await Axios.PostHeader(`/m/CombinShow/getCombinChapterList?info=${params}`,null);
     if(response.status === 200 && response.statusText === "OK"){
         return response.data;
     }
@@ -70,7 +70,7 @@ const GetCourseDetailChapterList_Async = async (params)=>{
 
 //获取课程详情页面的节列表
 const GetCourseDetailLessonList_Async = async (params)=>{
-    const response = await Axios.PostHeader(`/piece/CombinShow/getCombinLessonList?info=${params}`,null);
+    const response = await Axios.PostHeader(`/m/CombinShow/getCombinLessonList?info=${params}`,null);
     if(response.status === 200 && response.statusText === "OK"){
         
         return response.data;
@@ -80,7 +80,7 @@ const GetCourseDetailLessonList_Async = async (params)=>{
 
 //我的课
 const GetMyCourseList_Async = async (params)=>{
-    const response = await Axios.PostHeader(`/piece/CombinShow/myCombin?info=${params}`,null);
+    const response = await Axios.PostHeader(`/m/CombinShow/myCombin?info=${params}`,null);
     if(response.status === 200 && response.statusText === "OK"){
         
         return response.data;
@@ -88,6 +88,33 @@ const GetMyCourseList_Async = async (params)=>{
     return null;
 }
 
+//登录接口
+const Login_Async = async (params)=>{
+    const response = await Axios.PostHeader(`/m/LoginShow/loginNew?info=${params}`,null);
+    if(response.status === 200 && response.statusText === "OK"){
+        
+        return response.data;
+    }
+    return null;
+}
+
+//发送短信验证码
+const SendSmsCode_Async = async (params)=>{
+    const response = await Axios.PostHeader(`/m/UserShow/createSmsCode?info=${params}`,null);
+    if(response.status === 200 && response.statusText === "OK"){
+        return response.data;
+    }
+    return null;
+}
+
+//用户注册
+const Register_Async = async (params)=>{
+    const response = await Axios.PostHeader(`/m/UserShow/registerNew?info=${params}`,null);
+    if(response.status === 200 && response.statusText === "OK"){
+        return response.data;
+    }
+    return null;
+}
 
 export {
     Axios_Get_IndexContent,
@@ -99,4 +126,7 @@ export {
     GetCourseDetailChapterList_Async,
     GetCourseDetailLessonList_Async,
     GetMyCourseList_Async,
+    Login_Async,
+    SendSmsCode_Async,
+    Register_Async,
 };

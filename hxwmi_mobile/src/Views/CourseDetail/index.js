@@ -141,12 +141,12 @@ class CourseDetail extends Component {
             currentcourseType: res.combinBook_s[0]
         })
 
-        if(res){
+        if(res && res.combinBook_s && res.combinBook_s.length >0){
  
             let params = {
                 "combin_book_type": res.combinBook_s[0].combinBookType,  //课程内容类型  1视频 2直播 3自建视频
                 "cas_id": res.combinBook_s[0].cas_id,
-                "user_token":"67e2ce3346d946e1a9ac4ede6bfd7dd7",
+                "user_token": localStorage.getItem('accessToken')|| "",
             }
 
             let chapterList = await this.GetChapterList_Async(params);
@@ -164,7 +164,7 @@ class CourseDetail extends Component {
                     "combin_chapter_id": chapterList[0].id,
                     "combin_book_type": res.combinBook_s[0].combinBookType,  
                     "combin_id": this.props.match.params.id || '',
-                    "user_token":"67e2ce3346d946e1a9ac4ede6bfd7dd7",
+                    "user_token": localStorage.getItem('accessToken') || "",
                 }
 
                 let lessonList = await this.GetLessonList_Async(params);
@@ -181,7 +181,7 @@ class CourseDetail extends Component {
 
         let params = {  
             "combin_id": this.props.match.params.id || "",
-            "user_token":"67e2ce3346d946e1a9ac4ede6bfd7dd7",
+            "user_token": localStorage.getItem('accessToken') || "",
         }
 
         let res = await GetCourseDetail_Async(JSON.stringify(params));
@@ -265,7 +265,7 @@ class CourseDetail extends Component {
             let params = {
                 "combin_book_type": obj.combinBookType,  //课程内容类型  1视频 2直播 3自建视频
                 "cas_id": obj.cas_id,
-                "user_token":"67e2ce3346d946e1a9ac4ede6bfd7dd7",
+                "user_token": localStorage.getItem('accessToken')|| "",
             }
 
             let chapterList = await this.GetChapterList_Async(params);
@@ -294,7 +294,7 @@ class CourseDetail extends Component {
             "combin_chapter_id": id,
             "combin_book_type": this.state.currentcourseType.combinBookType,  
             "combin_id": this.props.match.params.id || '',
-            "user_token":"67e2ce3346d946e1a9ac4ede6bfd7dd7",
+            "user_token": localStorage.getItem('accessToken')||"",
         }
 
         let lessonList = await this.GetLessonList_Async(params);
