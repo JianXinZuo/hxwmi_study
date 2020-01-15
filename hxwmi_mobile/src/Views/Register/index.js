@@ -7,7 +7,9 @@ import icon_nick_name from './images/icon_nick_name.png';
 import icon_key from './images/icon_key.png';
 import { Icon, Toast } from 'antd-mobile';
 import { SendSmsCode_Async, Register_Async, } from '../../Services';
+import { withRouter } from 'react-router-dom';
 
+@withRouter
 class Register extends Component {
 
     constructor(props) {
@@ -24,7 +26,7 @@ class Register extends Component {
     }
 
     GotoIndex =()=>{
-
+        this.props.history.push('/login');
     }
     
     //输入手机号
@@ -232,6 +234,11 @@ class Register extends Component {
 
                     {/* 注册按钮 */}
                     <div className="register_btn" onClick={ this.UserRegister_Async }>注 册</div>
+
+                    <div className="register_agreement" onClick={ ()=>{ this.props.history.push('/register_agreement')}}>
+                        点击注册，表示您同意
+                        <span>《用户使用手册》</span>
+                    </div>
                 </div>
             </div>
         )

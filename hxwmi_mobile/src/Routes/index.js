@@ -16,7 +16,9 @@ import {
     GoodBook,
     CourseDetail,
     CoursePlayer,
-    Register
+    Register,
+    RegisterAgreement,
+
 } from '../Views';
 
 //一级页面
@@ -91,13 +93,11 @@ export const mainRouter = [
         pathname:'/register',   //注册页面
         component: Register,
         title:'注册'
+    },{
+        pathname:'/register_agreement',   //注册协议
+        component: RegisterAgreement,
+        title:'注册协议'
     }
-    //{
-    //     pathname:'/resetpassword',   //重置密码页面
-    //     component: ResetPassword,
-    //     title:'重置密码'
-    // },
-    
 ]
 
 //二级页面

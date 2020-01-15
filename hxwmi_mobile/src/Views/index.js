@@ -94,6 +94,12 @@ const Register = Loadable({
     loading: Loading
 });
 
+//用户使用手册
+const RegisterAgreement = Loadable({
+    loader:()=> import('./RegisterAgreement'),
+    loading: Loading
+});
+
 //选择专业
 const SelectMajor = Loadable({
     loader:()=> import('./SelectMajor'),
@@ -167,4 +173,5 @@ export{
     GoodBook,
     CourseDetail,
     CoursePlayer,
+    RegisterAgreement,
 }

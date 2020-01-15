@@ -116,6 +116,25 @@ const Register_Async = async (params)=>{
     return null;
 }
 
+//获取问答列表
+const GetQAList_Async = async(params)=>{
+    const response = await Axios.PostHeader(`/m/TopicCommentShow/getTopicList?info=${params}`,null);
+    if(response.status === 200 && response.statusText === "OK"){
+        return response.data;
+    }
+    return null;
+}
+
+//用户关注
+const ToFollow_Async = async(params)=>{
+    const response = await Axios.PostHeader(`/m/TopicCommentShow/follow?info=${params}`,null);
+    if(response.status === 200 && response.statusText === "OK"){
+        return response.data;
+    }
+    return null;
+}
+
+
 export {
     Axios_Get_IndexContent,
     Axios_Get_MajorAll,
@@ -129,4 +148,6 @@ export {
     Login_Async,
     SendSmsCode_Async,
     Register_Async,
+    GetQAList_Async,
+    ToFollow_Async
 };

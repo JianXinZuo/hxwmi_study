@@ -77,7 +77,7 @@ class SelectMajor extends Component {
     GotoIndex = ()=>{
         this.setState({ show_page:'select_major_index' });
         setTimeout(()=>{
-            this.props.history.push('/index');
+            this.props.history.goBack();
         },685);
     }
 
