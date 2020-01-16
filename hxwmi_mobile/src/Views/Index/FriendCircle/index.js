@@ -4,10 +4,14 @@ import moment from 'moment';
 import icon_switch from './images/icon_switch.png';
 import icon_default_avator from './images/icon_defaultImage.jpg';
 import { withRouter } from 'react-router-dom';
-import { 
-    GetQAList_Async,
-    ToFollow_Async
-} from '../../../Services';
+import {  GetQAList_Async, ToFollow_Async, AddNewPost_Async } from '../../../Services';
+import {
+    TextareaItem,
+    ImagePicker,
+    WingBlank,
+    Toast,
+
+ } from 'antd-mobile';
 
 @withRouter
 class FriendCircle extends Component {
@@ -16,17 +20,21 @@ class FriendCircle extends Component {
         super(props);
 
         this.pageNo = 0;
-        this.dateFormat = 'YYYY-MM-DD HH:mm:ss',
+        this.dateFormat = 'YYYY-MM-DD HH:mm:ss';
 
         this.state ={
+            files:[],
             list:[],
             isExpendBtn:false,
             isLoading:false,
             hasMore: true,
+            openEditBox:false,
+            edit_content:"",
         }
     }
 
     async componentDidMount(){
+        Toast.loading("Loading...", 2, ()=>{}, true);
         let list = await this.GetList_Async();
         
         if(list && list.length >0){    
@@ -106,7 +114,7 @@ class FriendCircle extends Component {
         if(!this.state.hasMore){
             return;
         }
-
+        
         this.setState({ isLoading: true });
         let list = await this.GetList_Async();
         this.setState({ isLoading:false });
@@ -128,7 +136,6 @@ class FriendCircle extends Component {
     //滚动列表
     ScrollHandler = async (e)=>{
         let dom = e.target;
-
         let position = {
             top: dom.scrollTop,
             left: dom.scrollLeft,
@@ -152,13 +159,61 @@ class FriendCircle extends Component {
     }
 
     //添加新帖
-    AddNewPost =()=>{
+    AddNewPost =async ()=>{
+        console.log(this.state.edit_content);
+        let params = {
+            user_token: localStorage.getItem('accessToken') || "",
+            subject_id: localStorage.getItem('SubMajor_Id') || "",
+            content: this.state.edit_content,
+        }
+        const data = new FormData();
+        const { files } =  this.state;
 
+        files && files.forEach((item)=>{
+            data.append("files", item.file);
+        });
+
+        let res = await AddNewPost_Async(JSON.stringify(params),data);
+        console.log(res);
+        
+        if(res.code === "200" && res.msg === "success"){
+
+            Toast.success('发表成功！', 2, () => {
+
+                this.setState({
+                    list:[ res.data, ...this.state.list],
+                    openEditBox:false
+                },()=>{
+                    this.refs.friend_body_view.scrollTop = 0
+                });
+            });
+        }else{
+
+            if(res.code === "300" && res.msg === "用户标识失效,请重新登录！"){
+                
+                Toast.info('登录已过期，请重新登录', 2, () => {
+                    this.setState({
+                        openEditBox:false
+                    });
+                    this.props.history.push('/login');
+                });
+
+            }else{
+
+            }
+        }
+    }
+
+    onFileChange = (files, type, index) => {
+        console.log(files, type, index);
+        this.setState({
+            files
+        });
     }
 
     render() {
-
-        const ListItems = this.state.list.map((item)=>{
+        const { list, files } = this.state;
+        const ListItems = list && list.map((item)=>{
             
             let imagesList = [];
             if(item.image_url){
@@ -219,31 +274,10 @@ class FriendCircle extends Component {
                     </div>
                 </div>
 
-                <div className="friend_body_view" onScroll={ this.ScrollHandler }>
+                <div className="friend_body_view" ref="friend_body_view" onScroll={ this.ScrollHandler }>
                     {
                         ListItems
                     }
-                    {/* <div className="QA_item_view">
-                        <div className="user_info">
-                            <div className="user_avator"><img src={icon_avator} alt=""/></div>
-                            <div className="user_nickname">璐璐</div>
-                            <div className="user_follow"><a>＋关注</a></div>
-                        </div>
-                        <div className="QA_content">考点定位用起来很方便，不然我这种学渣每次都要翻 书好久，个人也很喜欢每日一练，积少成多。</div>
-                        <div className="QA_images">
-                            <div><img src={icon_defaultImage} alt=""/></div>
-                            <div><img src={icon_defaultImage} alt=""/></div>
-                            <div><img src={icon_defaultImage} alt=""/></div>
-                            <div></div>
-                        </div>
-                        <div className="QA_desc">
-                            <div><span>2018-07-23 13:50:36</span></div>
-                            <div className="QA_desc_btn">
-                                <span>5阅读</span>
-                                <span>1回复</span>
-                            </div>
-                        </div>
-                    </div> */}
                     {
                         this.state.hasMore ?(
                             <div className="list_view_footer" onClick={ this.onRefresh }>点击或下拉加载数据...</div>
@@ -258,15 +292,58 @@ class FriendCircle extends Component {
                     className={ this.state.isExpendBtn ? "friend_suspension_view active":"friend_suspension_view"} 
                     onClick={ this.OpenBtnGroup }
                 ></div>
-                <div className={ this.state.isExpendBtn ? "friend_suspension_hear active":"friend_suspension_hear"}></div>
+                <div 
+                    className={ this.state.isExpendBtn ? "friend_suspension_hear active":"friend_suspension_hear"}
+                    onClick={ ()=>{
+                        window.open('https://tb.53kf.com/code/client/10192515/1');
+                    }}
+                ></div>
                 <div 
                     className={ this.state.isExpendBtn ? "friend_suspension_edit active":"friend_suspension_edit"}
-                    onClick={ this.AddNewPost }
+                    onClick={ ()=>{
+                        this.setState({
+                            openEditBox:true
+                        });
+                    } }
                 ></div>
 
-                {/* <div className="add_layer">
+                <div className={ this.state.openEditBox ? "add_layer active":"add_layer"}>
+                    <div className="layer_header_view">
+                        <div 
+                            className="layer_header_cancel" 
+                            onClick={()=>{
+                                this.setState({
+                                    edit_content:'',
+                                    openEditBox:false
+                                });
+                                console.log(this.refs);
+                        }}>取消</div>
 
-                </div> */}
+                        <div className="layer_header_yes" onClick={ this.AddNewPost }>发表</div>
+                    </div>
+
+                    <div className="layer_header_conent">
+                        <WingBlank>
+                            <TextareaItem
+                                value={ this.state.edit_content }
+                                onChange={(txt)=>{
+                                    this.setState({edit_content:txt})
+                                }}
+                                placeholder="输入想要提出的问题..."
+                                rows={6}
+                                count={10000}
+                            />
+                        
+                            <ImagePicker
+                                files={files}
+                                onChange={this.onFileChange}
+                                onImageClick={(index, fs) => console.log(index, fs)}
+                                selectable={true}
+                                multiple={true}
+                            />
+                        </WingBlank> 
+                    </div>
+                </div>
             </div>
         )
     }

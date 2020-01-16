@@ -1,5 +1,15 @@
 
 import { Axios } from './api_config';
+import { Toast } from 'antd-mobile';
+
+//系统登录过期
+const System_Logout = (response)=>{
+    if(response.data.code==="300"){
+        Toast.fail('登录已过期，请重新登录', 2, () => {
+            window.location.href="/login"
+        });
+    }
+}
 
 const Axios_Get_IndexContent = async (params)=>{
     return (
@@ -20,9 +30,7 @@ const GetHotNews_Async = async (params)=>{
     
     if(response.status === 200 && response.statusText === "OK"){
         
-        // if(response.data.code==="300"){
-        //     window.location.href="/login"
-        // }
+        System_Logout(response);
 
         return response.data;
     }
@@ -35,6 +43,9 @@ const GetCourseList_ByType_Async = async (params)=>{
     const response = await Axios.PostHeader(`/m/CombinShow/secondaryList?info=${params}`,null);
     
     if(response.status === 200 && response.statusText === "OK"){
+        
+        System_Logout(response);
+        
         return response.data;
     }
 
@@ -45,6 +56,7 @@ const GetCourseList_ByType_Async = async (params)=>{
 const GetGoodList_Async = async (params)=>{
     const response = await Axios.PostHeader(`/m/gooShow/gooList?info=${params}`,null);
     if(response.status === 200 && response.statusText === "OK"){
+        System_Logout(response);
         return response.data;
     }
     return null;
@@ -54,6 +66,7 @@ const GetGoodList_Async = async (params)=>{
 const GetCourseDetail_Async = async (params)=>{
     const response = await Axios.PostHeader(`/m/CombinShow/combinsDetail?info=${params}`,null);
     if(response.status === 200 && response.statusText === "OK"){
+        System_Logout(response);
         return response.data;
     }
     return null;
@@ -63,6 +76,7 @@ const GetCourseDetail_Async = async (params)=>{
 const GetCourseDetailChapterList_Async = async (params)=>{
     const response = await Axios.PostHeader(`/m/CombinShow/getCombinChapterList?info=${params}`,null);
     if(response.status === 200 && response.statusText === "OK"){
+        System_Logout(response);
         return response.data;
     }
     return null;
@@ -72,7 +86,7 @@ const GetCourseDetailChapterList_Async = async (params)=>{
 const GetCourseDetailLessonList_Async = async (params)=>{
     const response = await Axios.PostHeader(`/m/CombinShow/getCombinLessonList?info=${params}`,null);
     if(response.status === 200 && response.statusText === "OK"){
-        
+        System_Logout(response);
         return response.data;
     }
     return null;
@@ -82,7 +96,7 @@ const GetCourseDetailLessonList_Async = async (params)=>{
 const GetMyCourseList_Async = async (params)=>{
     const response = await Axios.PostHeader(`/m/CombinShow/myCombin?info=${params}`,null);
     if(response.status === 200 && response.statusText === "OK"){
-        
+        System_Logout(response);
         return response.data;
     }
     return null;
@@ -120,6 +134,7 @@ const Register_Async = async (params)=>{
 const GetQAList_Async = async(params)=>{
     const response = await Axios.PostHeader(`/m/TopicCommentShow/getTopicList?info=${params}`,null);
     if(response.status === 200 && response.statusText === "OK"){
+        System_Logout(response);
         return response.data;
     }
     return null;
@@ -129,11 +144,21 @@ const GetQAList_Async = async(params)=>{
 const ToFollow_Async = async(params)=>{
     const response = await Axios.PostHeader(`/m/TopicCommentShow/follow?info=${params}`,null);
     if(response.status === 200 && response.statusText === "OK"){
+        System_Logout(response);
         return response.data;
     }
     return null;
 }
 
+//发表新帖
+const AddNewPost_Async = async(params, formData)=>{
+    const response = await Axios.Post_FormData(`/m/TopicCommentShow/addTopic?info=${params}`,formData);
+    if(response.status === 200 && response.statusText === "OK"){
+        System_Logout(response);
+        return response.data;
+    }
+    return null;
+}
 
 export {
     Axios_Get_IndexContent,
@@ -149,5 +174,6 @@ export {
     SendSmsCode_Async,
     Register_Async,
     GetQAList_Async,
-    ToFollow_Async
+    ToFollow_Async,
+    AddNewPost_Async
 };

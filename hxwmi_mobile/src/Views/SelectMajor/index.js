@@ -56,7 +56,10 @@ class SelectMajor extends Component {
         });
 
         let id = `major_${key}`;
-        document.getElementById(id).scrollIntoView();
+        let dom = document.getElementById(id);
+        if(dom){
+            dom.scrollIntoView();
+        }
     }
 
     //选择二级专业

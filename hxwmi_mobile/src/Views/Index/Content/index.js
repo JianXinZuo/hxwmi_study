@@ -3,6 +3,7 @@ import './index.less';
 import { connect } from 'react-redux';
 import { FetchIndex } from '../../../Actions/IndexContent';
 import { MyHeader } from '../../../Components';
+import { Toast } from 'antd-mobile';
 
 const mapStateToProps = (state)=>{
     // console.log(state);
@@ -23,6 +24,7 @@ class Index extends Component {
     }
 
     componentDidMount (){
+        Toast.loading("Loading...", 2, ()=>{}, true);
         let subject_id = localStorage.getItem('SubMajor_Id');
         let token = localStorage.getItem('accessToken');
 

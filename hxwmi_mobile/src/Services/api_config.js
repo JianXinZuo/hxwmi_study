@@ -94,11 +94,25 @@ const PostHeader = (url, params) => {
     });
 };
 
+//表单提交方式
+const Post_FormData = (url, params) =>{
+    return axios({
+        method: "post",
+        url: `${baseUrl}${url}`,
+        data: params,
+        headers: {
+            "Content-Type": "multipart/form-data",
+            charset: "utf-8"
+        }
+    });
+}
+
 const Axios ={
     Get,
     PostHeader,
     PostBody,
-    Multiple
+    Multiple,
+    Post_FormData
 }
 
 export {

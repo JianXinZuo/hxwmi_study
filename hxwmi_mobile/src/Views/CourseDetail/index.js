@@ -109,9 +109,7 @@ class CourseDetail extends Component {
     
     async componentDidMount(){
         console.log(this.props);
-        // Toast.loading('Loading...', 1.5, () => {
-        //     console.log('加载完成 !!!');
-        // });
+        Toast.loading("Loading...", 2, ()=>{}, true);
 
         setTimeout(() => {
             this.setState({

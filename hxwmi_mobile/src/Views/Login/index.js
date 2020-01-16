@@ -156,7 +156,7 @@ class Login extends Component {
     //跳转方法
     GotoIndex = ()=>{
         console.log(this.props);
-        this.props.history.push('/index');
+        this.props.history.goBack();
     }
 
     render() {

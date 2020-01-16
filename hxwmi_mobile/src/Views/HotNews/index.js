@@ -4,6 +4,7 @@ import { withRouter} from 'react-router-dom';
 import './index.less';
 import { GetHotNews_Async } from '../../Services/index';
 import moment from 'moment';
+import { Toast, } from 'antd-mobile';
 
 @withRouter
 class HotNews extends Component {
@@ -28,7 +29,7 @@ class HotNews extends Component {
     }
 
     async componentDidMount() {
-        
+        Toast.loading("加载数据中...", 2, ()=>{}, true);
         setTimeout(() => {
             this.setState({
                 OpenPage:true

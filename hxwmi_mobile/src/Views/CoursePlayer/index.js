@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ViewHeader } from '../../Components';
 import './index.less';
 import { withRouter } from 'react-router-dom';
-import { Accordion, List } from 'antd-mobile';
+import { Accordion, List,Toast } from 'antd-mobile';
 import icon_ellipse from './images/icon_ellipse.png';
 
 import { 
@@ -29,7 +29,7 @@ class CoursePlayer extends Component {
     }
     
     async componentDidMount(){
-
+        Toast.loading("Loading...", 2, ()=>{}, true);
         setTimeout(() => {
             this.setState({
                 OpenPage:true
