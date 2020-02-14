@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { Toast } from 'antd-mobile';
 const baseUrl = "/api";
 
 //请求前拦截
@@ -16,7 +16,8 @@ axios.interceptors.request.use(
         return config;
     },
     err => {
-        console.log("请求超时");
+        console.log(err);
+        Toast.offline("请求超时",2,()=>{},true);
         return Promise.reject(err);
     }
 );
@@ -27,20 +28,18 @@ axios.interceptors.response.use(
         return data 
     },
     (err) => {
-
+        console.log(err);
         if (err.response.status === 504 || err.response.status === 404) {
 
-            console.log("服务器被吃了⊙﹏⊙∥");
-            // window.location.href = "/login"
+            Toast.fail("服务器被吃了⊙﹏⊙∥",2,()=>{},true);
 
         } else if (err.response.status === 401) {
-            
-            console.log("你没有权限访问");
-            window.location.href = "/login"
+
+            Toast.fail("你没有权限访问",2,()=>{},true);
 
         } else if (err.response.status === 500) {
 
-            console.log("服务器开小差了⊙﹏⊙∥");
+            Toast.fail("服务器开小差了⊙﹏⊙∥",2,()=>{},true);
 
         }
         return Promise.reject(err);

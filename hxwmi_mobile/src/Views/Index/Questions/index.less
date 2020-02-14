@@ -1,8 +1,8 @@
 .qustion_index .qustion_header_view{
     width: 100%;
     height: 4rem;
-    border: solid 1px red;
-    position: fixed;
+    // border: solid 1px red;
+    position: absolute;
     z-index: 2;
     color: white;
     display: flex;
@@ -16,13 +16,50 @@
 .qustion_header_view .qustion_header_view_left{
     height: 4rem;
     width: 80%;
-    overflow-x: scroll;
-    border: solid 1px red;
+    // border: solid 1px red;
+
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    -webkit-overflow-scrolling: touch;
+    touch-action: cross-slide-x;
+}
+.qustion_header_view .qustion_header_view_left::-webkit-scrollbar{
+    display: none;
+}
+.qustion_header_view .qustion_header_view_left .sub_major_item{
+    padding-top: 1rem;
+    // border: solid 1px red;
+    flex-basis: 35%;
+    flex-shrink: 0;
+    white-space: nowrap;
+    // padding-left: 2rem;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+// .sub_major_item::after{
+
+// }
+.sub_major_item.active{
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.sub_major_item.active::after{
+    content: "";
+    display: block;
+    width: 1.5rem;
+    height: 0.32rem;
+    margin-top: 0.2rem;
+    background-color: white;
+    border-radius: 0.16rem;
 }
 .qustion_header_view .qustion_header_view_right{
     height: 4rem;
     width: 20%;
-    border: solid 1px red;
+    // border: solid 1px red;
     display: flex;
     flex-direction: row;
     justify-content: center;

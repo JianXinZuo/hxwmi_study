@@ -160,6 +160,47 @@ const AddNewPost_Async = async(params, formData)=>{
     return null;
 }
 
+//我的问答
+const GetQAListByUser_Async = async(params)=>{
+    const response = await Axios.PostHeader(`/m/TopicCommentShow/myTopicList?info=${params}`,null);
+    if(response.status === 200 && response.statusText === "OK"){
+        System_Logout(response);
+        return response.data;
+    }
+    return null;
+}
+
+//我的积分
+const GetMyIntegral_Async = async(params)=>{
+    const response = await Axios.PostHeader(`/m/IntegralShow/inteList?info=${params}`,null);
+    if(response.status === 200 && response.statusText === "OK"){
+        System_Logout(response);
+        return response.data;
+    }
+    return null;
+}
+
+//积分消费记录
+const GetIntegralLogList_Async = async(params)=>{
+    const response = await Axios.PostHeader(`/m/IntegralShow/inteLog?info=${params}`,null);
+    if(response.status === 200 && response.statusText === "OK"){
+        System_Logout(response);
+        return response.data;
+    }
+    return null;
+}
+
+//积分充值
+//http://brace.hxwomi.com/piece/payFor/recharge
+const RechargeIntegral = async (params)=>{
+    const response = await Axios.PostHeader(`/m/payFor/recharge?info=${params}`,null);
+    if(response.status === 200 && response.statusText === "OK"){
+        System_Logout(response);
+        return response.data;
+    }
+    return null;
+}
+
 export {
     Axios_Get_IndexContent,
     Axios_Get_MajorAll,
@@ -175,5 +216,9 @@ export {
     Register_Async,
     GetQAList_Async,
     ToFollow_Async,
-    AddNewPost_Async
+    AddNewPost_Async,
+    GetQAListByUser_Async,
+    GetMyIntegral_Async,
+    GetIntegralLogList_Async,
+    RechargeIntegral
 };

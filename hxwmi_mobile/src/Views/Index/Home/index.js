@@ -7,6 +7,7 @@ import icon_error2x from './images/icon_error2x.png';
 import icon_like2x from './images/icon_like2x.png';
 import icon_order2x from './images/icon_order2x.png';
 import icon_red_packet from './images/icon_red_packet.png';
+import icon_circle from './images/icon_circle.png';
 import { Icon, } from 'antd-mobile';
 import icon_integral from './images/icon_integral.png';
 import icon_orderByList from './images/icon_orderByList.png';
@@ -15,8 +16,29 @@ import icon_feedback from './images/icon_feedback.png';
 import icon_shared from './images/icon_shared.png';
 import icon_setting from './images/icon_setting.png';
 import icon_invitation from './images/icon_invitation.png';
+import { withRouter } from 'react-router-dom';
 
+@withRouter
 class Home extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state ={
+            MajorName:"未选择专业"
+        }
+    }
+
+    componentDidMount(){
+        this.setState({
+            MajorName: localStorage.getItem('MajorName') || "未选择专业"
+        });
+    }
+
+    //切换专业
+    SwitchMaojr = ()=>{
+        this.props.history.push('/select_major');
+    }
+
     render() {
         return (
             <div className="home_index">
@@ -28,7 +50,7 @@ class Home extends Component {
 
                     <div className="home_header_view_center">
                         <div className="home_nickName">Anonymous</div>
-                        <div className="home_major">默认考试：全国护士职业资格考试</div>
+                        <div className="home_major" onClick={ this.SwitchMaojr }>默认专业：{ this.state.MajorName }</div>
                     </div>
 
                     <div className="home_header_view_right">
@@ -68,23 +90,27 @@ class Home extends Component {
                         </div>
                     </div>
 
-                    <div className="home_item_view">
+                    <div className="home_item_view" onClick={()=>{
+                        this.props.history.push('/my_questions_answers');
+                    }}>
                         <div className="home_item_view_left">
-                            <img src={icon_red_packet} alt="我的问答"/>
+                            <img src={icon_circle} alt="我的问答"/>
                         </div>
                         <div className="home_item_view_center">我的问答</div>
                         <div className="home_item_view_right">
-                            <Icon type={"right"} color="#666666" onClick={ this.GotoIndex }></Icon>
+                            <Icon type={"right"} color="#666666"></Icon>
                         </div>
                     </div>
 
-                    <div className="home_item_view">
+                    <div className="home_item_view" onClick={ ()=>{
+                        this.props.history.push('/my_integral');
+                    }}>
                         <div className="home_item_view_left">
                             <img src={icon_integral} alt="我的积分"/>
                         </div>
                         <div className="home_item_view_center">我的积分</div>
                         <div className="home_item_view_right">
-                            <Icon type={"right"} color="#666666" onClick={ this.GotoIndex }></Icon>
+                            <Icon type={"right"} color="#666666"></Icon>
                         </div>
                     </div>
 

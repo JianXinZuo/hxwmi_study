@@ -19,6 +19,9 @@ class Index extends Component {
 
     componentDidMount(){
         console.log(this.props);
+        this.setState({
+            selectedTab: this.props.location.pathname
+        });
     }
 
     onChange_SelectTab = (txt)=>{

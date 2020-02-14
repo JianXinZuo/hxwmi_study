@@ -54,9 +54,9 @@ class MyCourse extends Component {
             isLoading:true,
         });
 
-        Toast.loading("Loading...", 2, ()=>{}, true);
+        Toast.loading("Loading...", 0, ()=>{}, true);
         let res = await GetMyCourseList_Async(JSON.stringify(params));
-
+        Toast.hide();
         this.setState({
             isLoading:false,
         });

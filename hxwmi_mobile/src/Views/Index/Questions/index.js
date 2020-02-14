@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import './index.less';
-import {
-    WhiteSpace,
-    Grid,
-} from 'antd-mobile';
+import { Grid } from 'antd-mobile';
 import icon_public_course from './images/icon_public_course.png';
 import icon_live from './images/icon_live.png';
 import icon_system_course from './images/icon_system_course.png';
@@ -12,6 +9,7 @@ import icon_questions from './images/icon_questions.png';
 import icon_good_book from './images/icon_good_book.png';
 import icon_listen_book from './images/icon_listen_book.png';
 import icon_e_book from './images/icon_e_book.png';
+import { withRouter } from 'react-router-dom';
 
 const my_tabs = [
     {
@@ -56,6 +54,7 @@ const my_tabs = [
     },
 ];
 
+@withRouter
 class Questions extends Component {
 
     constructor(props) {
@@ -71,6 +70,11 @@ class Questions extends Component {
             list_tabs:my_tabs
         });
     }
+
+    //切换专业
+    SwitchMaojr = ()=>{
+        this.props.history.push('/select_major');
+    }
     
     render() {
         const list_tabs = this.state.list_tabs;
@@ -78,9 +82,19 @@ class Questions extends Component {
         return (
             <div className="qustion_index">
                 <div className="qustion_header_view">
-                    <div className="qustion_header_view_left"></div>
+                    <div className="qustion_header_view_left">
+                        <div className="sub_major_item active">
+                            初级会计实物
+                        </div>
+                        <div className="sub_major_item">
+                            经济发基础
+                        </div>
+                        <div className="sub_major_item">
+                            经济发基础
+                        </div>
+                    </div>
                     <div className="qustion_header_view_right">
-                        <div className="qustion_switch_major">切换专业</div>
+                        <div className="qustion_switch_major" onClick={ this.SwitchMaojr }>切换专业</div>
                     </div>
                 </div>
 
@@ -110,6 +124,10 @@ class Questions extends Component {
                         carouselMaxRow={2}
                         onClick={ this.click_Handler } 
                     />
+                </div>
+
+                <div className="">
+
                 </div>
             </div>
         )

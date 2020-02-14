@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
-import './index.less';
-import moment from 'moment';
-import icon_switch from './images/icon_switch.png';
-import icon_default_avator from './images/icon_defaultImage.jpg';
 import { withRouter } from 'react-router-dom';
-import {  GetQAList_Async, ToFollow_Async, AddNewPost_Async } from '../../../Services';
-import {
-    TextareaItem,
-    ImagePicker,
-    WingBlank,
-    Toast,
-
- } from 'antd-mobile';
+import './index.less';
+import { ViewHeader } from '../../Components';
+import { GetQAListByUser_Async, ToFollow_Async } from '../../Services';
+import { Toast } from 'antd-mobile';
+import moment from 'moment';
 
 @withRouter
-class FriendCircle extends Component {
-
+class MyQuestionsAnswers extends Component {
+    
     constructor(props) {
         super(props);
 
@@ -23,18 +16,22 @@ class FriendCircle extends Component {
         this.dateFormat = 'YYYY-MM-DD HH:mm:ss';
 
         this.state ={
-            files:[],
             list:[],
-            isExpendBtn:false,
             isLoading:false,
             hasMore: true,
-            openEditBox:false,
-            edit_content:"",
+            OpenPage:false,
         }
     }
 
     async componentDidMount(){
         
+        setTimeout(() => {
+            this.setState({
+                OpenPage:true
+            });
+        }, 1);
+
+        Toast.loading("Loading...", 2, ()=>{}, true);
         let list = await this.GetList_Async();
         
         if(list && list.length >0){    
@@ -44,32 +41,34 @@ class FriendCircle extends Component {
         }
     }
 
-    //获取问答列表
-    GetList_Async = async()=>{
+    GoToIndex =()=>{
+        this.setState({
+            OpenPage:false
+        });
+
+        setTimeout(() => {
+            this.props.history.push('/index/home');
+        }, 690);
+    }
+    
+    //获取问答列表数据
+    GetList_Async = async ()=>{
+
         this.pageNo++;
+
         let params = {
             user_token: localStorage.getItem('accessToken') || "",
-            subject_id: localStorage.getItem('SubMajor_Id') || "",
             page: this.pageNo,
             limit:'5',
         }
-        Toast.loading("Loading...", 0, ()=>{}, true);
-        let res = await GetQAList_Async(JSON.stringify(params));
-        Toast.hide();
-        console.log(res);
+
+        let res = await GetQAListByUser_Async(JSON.stringify(params));
 
         if(res && res.code ==="200" && res.msg==="success"){
             return res.data;
         }else{
             return null
         }
-    }
-    
-    //展开按钮
-    OpenBtnGroup = ()=>{
-        this.setState({
-            isExpendBtn: !this.state.isExpendBtn
-        });
     }
 
     //关注用户
@@ -79,9 +78,8 @@ class FriendCircle extends Component {
             user_token: localStorage.getItem('accessToken') || "",
             topic_id: item.id
         };
-        // Toast.loading("Loading...", 0, ()=>{}, true);
+
         let res = await ToFollow_Async(JSON.stringify(params));
-        // Toast.hide();
         console.log(res);
 
         if(res && res.code ==="200" && res.msg === "success" && res.data === "已关注"){
@@ -154,68 +152,9 @@ class FriendCircle extends Component {
             this.state.isLoading === false &&  await this.onRefresh();
         }
     }
-
-    //选择专业
-    SelectMojar = ()=>{
-        this.props.history.push('/select_major');
-    }
-
-    //添加新帖
-    AddNewPost =async ()=>{
-        console.log(this.state.edit_content);
-        let params = {
-            user_token: localStorage.getItem('accessToken') || "",
-            subject_id: localStorage.getItem('SubMajor_Id') || "",
-            content: this.state.edit_content,
-        }
-        const data = new FormData();
-        const { files } =  this.state;
-
-        files && files.forEach((item)=>{
-            data.append("files", item.file);
-        });
-
-        Toast.loading("数据传送中...",0);
-        let res = await AddNewPost_Async(JSON.stringify(params),data);
-        console.log(res);
-        
-        if(res.code === "200" && res.msg === "success"){
-
-            Toast.success('发表成功！', 2, () => {
-
-                this.setState({
-                    list:[ res.data, ...this.state.list],
-                    openEditBox:false
-                },()=>{
-                    this.refs.friend_body_view.scrollTop = 0
-                });
-            });
-        }else{
-
-            if(res.code === "300" && res.msg === "用户标识失效,请重新登录！"){
-                
-                Toast.info('登录已过期，请重新登录', 2, () => {
-                    this.setState({
-                        openEditBox:false
-                    });
-                    this.props.history.push('/login');
-                });
-
-            }else{
-
-            }
-        }
-    }
-
-    onFileChange = (files, type, index) => {
-        console.log(files, type, index);
-        this.setState({
-            files
-        });
-    }
-
+    
     render() {
-        const { list, files } = this.state;
+        const { list } = this.state;
         const ListItems = list && list.map((item)=>{
             
             let imagesList = [];
@@ -269,15 +208,9 @@ class FriendCircle extends Component {
         }); 
 
         return (
-            <div className="friend_circle_index">
-                <div className="friend_header_view">
-                    <div className="friend_header_title">圈子</div>
-                    <div className="friend_header_icon" onClick={ this.SelectMojar }>
-                        <img src={icon_switch} alt="切换专业"/>
-                    </div>
-                </div>
-
-                <div className="friend_body_view" ref="friend_body_view" onScroll={ this.ScrollHandler }>
+            <div className={ this.state.OpenPage ? "my_qa_index active" : "my_qa_index" }>
+                <ViewHeader title="我的问答" onClick={ this.GoToIndex } style={{ borderBottom:'solid 1px #ccc',fontWeight: "bold" }} />
+                <div className="my_qa_view_body" onScroll={ this.ScrollHandler }>
                     {
                         ListItems
                     }
@@ -288,68 +221,10 @@ class FriendCircle extends Component {
                             <div className="list_view_footer">暂无更多数据...</div>
                         )
                     }
-                    
-                </div>
-
-                <div 
-                    className={ this.state.isExpendBtn ? "friend_suspension_view active":"friend_suspension_view"} 
-                    onClick={ this.OpenBtnGroup }
-                ></div>
-                <div 
-                    className={ this.state.isExpendBtn ? "friend_suspension_hear active":"friend_suspension_hear"}
-                    onClick={ ()=>{
-                        window.open('https://tb.53kf.com/code/client/10192515/1');
-                    }}
-                ></div>
-                <div 
-                    className={ this.state.isExpendBtn ? "friend_suspension_edit active":"friend_suspension_edit"}
-                    onClick={ ()=>{
-                        this.setState({
-                            openEditBox:true
-                        });
-                    } }
-                ></div>
-
-                <div className={ this.state.openEditBox ? "add_layer active":"add_layer"}>
-                    <div className="layer_header_view">
-                        <div 
-                            className="layer_header_cancel" 
-                            onClick={()=>{
-                                this.setState({
-                                    edit_content:'',
-                                    openEditBox:false
-                                });
-                                console.log(this.refs);
-                        }}>取消</div>
-
-                        <div className="layer_header_yes" onClick={ this.AddNewPost }>发表</div>
-                    </div>
-
-                    <div className="layer_header_conent">
-                        <WingBlank>
-                            <TextareaItem
-                                value={ this.state.edit_content }
-                                onChange={(txt)=>{
-                                    this.setState({edit_content:txt})
-                                }}
-                                placeholder="输入想要提出的问题..."
-                                rows={6}
-                                count={10000}
-                            />
-                        
-                            <ImagePicker
-                                files={files}
-                                onChange={this.onFileChange}
-                                onImageClick={(index, fs) => console.log(index, fs)}
-                                selectable={true}
-                                multiple={true}
-                            />
-                        </WingBlank> 
-                    </div>
                 </div>
             </div>
         )
     }
 }
 
-export default FriendCircle;
+export default MyQuestionsAnswers;

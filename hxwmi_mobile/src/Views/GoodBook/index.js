@@ -27,9 +27,7 @@ class GoodBook extends Component {
     
     async componentDidMount() {
         
-        Toast.loading('Loading...', 1.5, () => {
-            console.log('加载完成 !!!');
-        });
+        Toast.loading('Loading...', 0);
 
         setTimeout(() => {
             this.setState({
@@ -47,6 +45,7 @@ class GoodBook extends Component {
                 isLoading: false,
             });
         }
+        Toast.hide();
     }
 
     async GetList_Async(){  //请求数据的方法

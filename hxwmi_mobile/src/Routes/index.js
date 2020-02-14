@@ -18,6 +18,9 @@ import {
     CoursePlayer,
     Register,
     RegisterAgreement,
+    MyQuestionsAnswers,
+    MyIntegral,
+    IntegralDetail,
 
 } from '../Views';
 
@@ -97,7 +100,21 @@ export const mainRouter = [
         pathname:'/register_agreement',   //注册协议
         component: RegisterAgreement,
         title:'注册协议'
+    },{
+        pathname:'/my_questions_answers',   //我的问答
+        component: MyQuestionsAnswers,
+        title:'我的问答'
+    },{
+        pathname:'/my_integral',   //我的积分
+        component: MyIntegral,
+        title:'我的积分'
+    },{
+        pathname:'/integral_detail',   //积分详情
+        component: IntegralDetail,
+        title:'积分详情'
     }
+    
+
 ]
 
 //二级页面

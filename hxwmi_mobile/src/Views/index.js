@@ -70,6 +70,24 @@ const FriendCircle = Loadable({
     loading:Loading
 });
 
+//我的问答页面
+const MyQuestionsAnswers = Loadable({
+    loader:()=> import('./MyQuestionsAnswers'),
+    loading:Loading
+});
+
+//我的积分页面
+const MyIntegral = Loadable({
+    loader:()=> import('./MyIntegral'),
+    loading:Loading
+});
+
+//积分详情
+const IntegralDetail = Loadable({
+    loader:()=> import('./IntegralDetail'),
+    loading:Loading
+});
+
 //我的
 const Home = Loadable({
     loader:()=> import('./Index/Home'),
@@ -174,4 +192,7 @@ export{
     CourseDetail,
     CoursePlayer,
     RegisterAgreement,
+    MyQuestionsAnswers,
+    MyIntegral,
+    IntegralDetail,
 }

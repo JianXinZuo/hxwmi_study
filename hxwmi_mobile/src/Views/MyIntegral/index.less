@@ -1,0 +1,263 @@
+.my_integral_index{
+    width: 100%;
+    height: 100%;
+    left: 100%;
+    transition: all ease-in-out 0.7s;
+    position: fixed;
+    font-family: PingFang-SC-Medium;
+}
+.my_integral_index.active {
+    left: 0;
+}
+
+.my_integral_index .my_integral_header_view{
+    width: 100%;
+    height: 4.1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    // border: solid 1px red;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+}
+.my_integral_index .my_integral_header_view div{
+    width: 33%;
+    flex-basis: 33%;
+    height: 4rem;
+    // border: solid 1px red;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 1;
+}
+.my_integral_index .my_integral_header_view div:first-child{
+    justify-content: flex-start;
+}
+.my_integral_index .my_integral_header_view div svg{
+    margin-left: 1.5rem;
+}
+.my_integral_index .my_integral_header_view div:last-child{
+    justify-content: flex-end;
+}
+.my_integral_index .my_integral_header_view div:last-child span{
+    margin-right: 1.5rem;
+}
+.my_integral_index .my_integral_header_view div span{
+    color: white;
+    font-size: 1.1rem;
+}
+.my_integral_index .my_integral_header_view .header_title {
+    font-weight: bold;
+}
+.my_integral_info_view{
+    width: 100%;
+    height: 12rem;
+    background-image: url(./images/background_header.png);
+    // border: solid 1px red;
+    position: absolute;
+    top:0;
+    z-index: 1;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.my_integral_info{
+    width: 60%;
+    height: 9rem;
+    // border: solid 1px red;
+    position: absolute;
+    top: 6rem;
+    background-color: #333;
+    border-radius: 0.4rem;
+    box-shadow: 5px 3px 5px #795530;
+}
+.my_integral_info .left_img{
+    // border: solid 1px red;
+    height: 2rem;
+    position: absolute;
+    top: 1rem;
+    width: 6rem;
+}
+.left_img::before{
+    content: "";
+    width: 2rem;
+    height: 2rem;
+    display: block;
+    border-radius: 1rem;
+    position: absolute;
+    left: 1rem;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.left_img::after{
+    content: "";
+    width: 2rem;
+    height: 2rem;
+    display: block;
+    position: absolute;
+    left: 2rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.right_btn{
+    width: 6rem;
+    // border: solid 1px red;
+    position: absolute;
+    right: 0rem;
+    top: 1rem;
+    height: 1.8rem;
+    color: white;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 0.9rem 0 0 0.9rem;
+    background-color: rgba(255,255,255,0.2);
+    line-height: 1.8rem;
+}
+.right_btn img{
+    width: 0.9rem;
+    height: 0.9rem;
+    margin: 0 0.3rem;
+    vertical-align: middle;
+}
+.total_integral{
+    font-size: 1.4rem;
+    width: 100%;
+    height: 4.5rem;
+    // border: solid 1px red;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    color: #FAD3AA;
+    font-weight: bold;
+    letter-spacing: 0.2rem;
+}
+.total_number{
+    width: 100%;
+    height: 3.5rem;
+    // border: solid 1px red;
+    color: white;
+    font-size: 2.6rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.my_integral_container{
+    width: 100%;
+    // border: solid 1px red;
+    height: auto;
+    position: absolute;
+    top: 16rem;
+    bottom: 8rem;
+    overflow-y: auto;
+    touch-action: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.my_integral_listview{
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.my_integral_item{
+    margin-left: 2.1%;
+    margin-top: 1rem;
+    border: solid 1px #999;
+    width: 30%;
+    height: 9.2rem;
+    border-radius: 0.4rem;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+}
+.my_integral_item.active{
+    background-image: url(./images/background_active.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+}
+.my_integral_item .integral_item{
+    border: dashed 0.1rem #999;
+    width: 91%;
+    height: 8.4rem;
+    border-radius: 0.4rem;
+}
+.my_integral_item .integral_item_price{
+    width: 100%;
+    height: 3.2rem;
+    // border: solid 1px red;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    color: #A67A42;
+    font-size: 1.6rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.my_integral_item .integral_item_num{
+    width: 100%;
+    height: 2.2rem;
+    // border: solid 1px red;
+    text-align: center;
+    line-height: 2rem;
+    font-size: 1.2rem;
+    color: #0E0E0E;
+}
+.my_integral_item .integral_item_give_num{
+    width: 80%;
+    margin: 0 auto;
+    height: 2rem;
+    border-radius: 1rem;
+    background-image: url(./images/background_integral.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    // border: solid 1px red;
+}
+.my_integral_item .integral_item_give_num img{
+    max-width: 1rem;
+    max-height: 1rem;
+}
+.my_integral_item .integral_item_give_num span{
+    color: white;
+    font-size: 1rem;
+}
+.my_integral_Recharge{
+    width: 100%;
+    height: 3.2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 3.5rem;
+}
+.my_integral_Recharge div{
+    width: 90%;
+    background-image: url(./images/background_login_btn.png);
+    height: 3.2rem;
+    background-size:100% 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
